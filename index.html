@@ -694,7 +694,7 @@ function renderPod(){
   const t=POD.totals||{}, daily=POD.daily||[], mem=POD.members||[];
   const tiles=[['🧜‍♀️',fmt(N(t.members)),'Puffins in the challenge','rgba(228,204,255,.22)'],['🫶','+'+fmt(N(t.followers)),'Followers gained','rgba(255,157,198,.22)'],['💰',money(N(t.revenue)),'Sales from LIVEs','rgba(240,207,134,.2)'],['⏱️',hrs(N(t.minutes)),'Hours LIVE together','rgba(255,92,122,.22)'],['🎙️',fmt(N(t.lives)),'LIVEs logged','rgba(127,242,220,.2)'],['💎',fmt(N(t.customers)),'New clients','rgba(228,204,255,.22)']];
   $('#podTotals').innerHTML=tiles.map(b=>`<div class="bigtile" style="--glow:${b[3]}"><div class="e">${b[0]}</div><b class="num">${esc(b[1])}</b><span>${b[2]}</span></div>`).join('');
-  const W=640,H=230,L=44,R=16,T=18,B=30;
+  const W=440,H=250,L=40,R=14,T=20,B=30;
   // hours together: cumulative area
   if(daily.length){
     const first=daily[0].date, span=Math.max(1,diff(first,TODAY)), byD=Object.fromEntries(daily.map(d=>[d.date,d]));
