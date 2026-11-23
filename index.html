@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>30 Days to Make Waves</title>
+<meta name="description" content="The 30-day TikTok LIVE challenge tracker for Spiritual Business Skool members. Set your intention, commit to your LIVE days, log every LIVE and watch the whole pod grow.">
+<meta name="theme-color" content="#06202A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: plate hero → sticky tab bar → one view at a time (hash-routed). Dark-only teal Mermaid by choice. */
+:root{
+  --bg:#0A2A33;--bg2:#06202A;--surf:#0E3B4A;--deep:#041820;
+  --line:rgba(127,242,220,.12);--line2:rgba(127,242,220,.26);
+  --txt:#F7F2EA;--soft:#D6E2DF;--muted:#93B3B3;
+  --lav:#E4CCFF;--pink:#FF9DC6;--mint:#7FF2DC;--gold:#F0CF86;--coral:#FF8A7A;--ruby:#FF5C7A;
+  --tt1:#25F4EE;--tt2:#FE2C55;
+  --grad:linear-gradient(100deg,#E4CCFF 0%,#FF9DC6 46%,#7FF2DC 100%);
+  --fire:linear-gradient(135deg,#FF5C7A 0%,#FF8A7A 55%,#F0CF86 100%);
+  --pill:rgba(8,40,52,.82);
+  --se:'Playfair Display',Georgia,'Times New Roman',serif;
+  --sa:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;font-family:var(--sa);font-size:15px;color:var(--txt);line-height:1.6;background:var(--bg);-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(ellipse at 100% 20%,rgba(255,157,198,.07),transparent 45%),radial-gradient(ellipse at 0% 75%,rgba(127,242,220,.07),transparent 45%);background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:var(--bg2)}
+[hidden]{display:none!important}
+a{color:var(--mint)}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--mint);outline-offset:2px}
+.wrap{max-width:1060px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-weight:600;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.gs{font-family:var(--se);font-style:italic;font-weight:400;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+h1,h2,h3{font-family:var(--se);font-weight:500;margin:0;text-wrap:balance;line-height:1.1}
+h2{font-size:clamp(26px,3.6vw,36px)}
+h3{font-size:20px}
+p{margin:0}
+.num{font-variant-numeric:tabular-nums}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line2);padding-top:env(safe-area-inset-top,0px)}
+.hero .plate{position:absolute;inset:0;background:url(assets/plate.jpg) 70% 35%/cover;animation:drift 30s ease-in-out infinite alternate}
+@keyframes drift{from{transform:scale(1.04)}to{transform:scale(1.14) translate(-2%,-1%)}}
+.hero .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,24,32,.9) 0%,rgba(4,24,32,.55) 60%,rgba(4,24,32,.35)),linear-gradient(180deg,transparent 60%,var(--bg))}
+.hero .in{position:relative;padding-block:38px 32px;display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;justify-content:space-between}
+.brand{display:flex;gap:18px;align-items:center}
+.tt{flex:0 0 auto;width:74px;height:74px;border-radius:22px;display:grid;place-items:center;background:#000;box-shadow:0 0 0 1.5px rgba(247,242,234,.18),0 14px 34px rgba(0,0,0,.45),0 0 30px rgba(254,44,85,.18)}
+.tt svg{width:42px;height:42px}
+.hero h1{font-size:clamp(38px,6.6vw,72px);font-weight:500;letter-spacing:-.01em;margin-top:8px;line-height:1}
+.hero h1 .gs{font-size:1.06em}
+.hero .tag{color:var(--soft);font-size:16px;margin-top:12px;max-width:540px}
+.daybadge{display:flex;align-items:center;gap:14px;padding:12px 18px 12px 12px;border-radius:999px;background:var(--pill);border:1.5px solid rgba(127,242,220,.42);box-shadow:0 0 22px rgba(127,242,220,.14)}
+.daybadge .orb{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-family:var(--se);font-size:24px;color:#0A2A33;background:var(--grad);box-shadow:0 0 24px rgba(255,157,198,.35)}
+.daybadge b{display:block;font-size:15px}
+.daybadge small{display:block;color:var(--muted);font-size:12.5px}
+@media (max-width:560px){.tt{width:56px;height:56px;border-radius:17px}.tt svg{width:32px;height:32px}.brand{gap:12px;align-items:flex-start}}
+
+/* tabs */
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(6,32,42,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line2)}
+nav.tabs .row{display:flex;gap:8px;align-items:center;padding-block:10px}
+nav.tabs .links{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+nav.tabs .links::-webkit-scrollbar{display:none}
+nav.tabs a{flex:0 0 auto;text-decoration:none;font-weight:500;font-size:13.5px;color:var(--soft);padding:7px 14px;border-radius:999px;border:1px solid var(--line2);white-space:nowrap}
+nav.tabs a.on{background:var(--grad);color:#0A2A33;border-color:transparent;font-weight:600}
+nav.tabs a:hover:not(.on){border-color:var(--mint);color:var(--txt)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font-weight:600;font-size:14.5px;padding:11px 20px;border-radius:999px;color:#0A2A33;background:var(--grad);box-shadow:0 10px 26px -10px rgba(255,157,198,.65);text-decoration:none;transition:transform .15s;white-space:nowrap}
+.btn:hover{transform:translateY(-1px)}
+.btn.fire{background:var(--fire);box-shadow:0 10px 26px -8px rgba(255,92,122,.6)}
+.btn.ghost{background:var(--pill);color:var(--txt);border:1.5px solid rgba(127,242,220,.42);box-shadow:none}
+.btn.sm{font-size:13px;padding:7px 14px}
+.btn.icon{padding:6px 10px;font-size:13px}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+
+main{padding-block:28px 60px}
+.view{display:grid;gap:22px}
+.card{position:relative;border-radius:22px;padding:24px;background:linear-gradient(160deg,rgba(14,59,74,.85),rgba(6,32,42,.92));border:1px solid var(--line2);box-shadow:0 18px 44px rgba(2,14,20,.35);min-width:0}
+.card.flat{background:rgba(4,24,32,.5);box-shadow:none}
+@media (max-width:560px){.card{padding:18px;border-radius:18px}}
+.head{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;justify-content:space-between}
+.head p{color:var(--soft);margin-top:6px;max-width:640px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:820px){.grid4{grid-template-columns:repeat(2,minmax(0,1fr))}.grid3{grid-template-columns:1fr}}
+@media (max-width:620px){.grid2{grid-template-columns:1fr}}
+
+.banner{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:14px 18px;border-radius:16px;background:rgba(240,207,134,.1);border:1px solid rgba(240,207,134,.45)}
+.banner p{color:var(--txt);font-size:14.5px}
+.banner.err{background:rgba(255,92,122,.1);border-color:rgba(255,92,122,.5)}
+
+/* from → to tiles */
+.ft{padding:18px;border-radius:18px;background:rgba(4,24,32,.55);border:1px solid var(--line2);min-width:0}
+.ft .lbl{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.ft .now{font-family:var(--se);font-size:32px;line-height:1.1;margin-top:6px}
+.ft .from{font-size:13px;color:var(--muted);margin-top:4px}
+.ft .delta{display:inline-block;margin-top:8px;font-size:12.5px;font-weight:600;padding:3px 10px;border-radius:999px;background:rgba(127,242,220,.12);color:var(--mint)}
+.ft .delta.zero{background:rgba(147,179,179,.12);color:var(--muted)}
+.em{font-size:20px;line-height:1;margin-right:4px}
+
+/* tide strip */
+.tide{display:grid;grid-template-columns:repeat(30,minmax(0,1fr));gap:4px;margin-top:14px}
+.tide i{aspect-ratio:1;border-radius:50%;border:1.5px solid rgba(147,179,179,.28)}
+.tide i.planned{border-color:rgba(255,138,122,.7)}
+.tide i.kept{background:var(--fire);border-color:transparent;box-shadow:0 0 10px rgba(255,92,122,.7)}
+.tide i.bonus{background:var(--mint);border-color:transparent;box-shadow:0 0 8px rgba(127,242,220,.6)}
+.tide i.missed{background:rgba(147,179,179,.16);border-color:transparent}
+.tide i.today{outline:2px solid var(--gold);outline-offset:2px}
+@media (max-width:620px){.tide{grid-template-columns:repeat(15,minmax(0,1fr))}}
+
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.kpi{text-align:center;padding:14px 8px;border-radius:16px;background:rgba(4,24,32,.55);border:1px solid var(--line2);min-width:0}
+.kpi b{display:block;font-family:var(--se);font-size:30px;line-height:1.1}
+.kpi span{display:block;font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.kpi.k1 b{color:var(--coral)}.kpi.k2 b{color:var(--mint)}.kpi.k3 b{color:var(--gold)}
+
+.intent{border-radius:18px;padding:18px 20px;background:rgba(4,24,32,.55);border:1px solid rgba(255,157,198,.4);min-width:0}
+.intent q{display:block;quotes:none;font-family:var(--se);font-style:italic;font-size:22px;line-height:1.3;margin-top:6px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chip{font-size:12.5px;font-weight:500;padding:5px 12px;border-radius:999px;background:var(--pill);border:1px solid var(--line2);color:var(--soft)}
+.chip b{color:var(--txt);font-weight:600}
+.next{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.next .when{font-family:var(--se);font-size:24px}
+
+/* calendar */
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin-top:16px}
+.cal .wd{text-align:center;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.cell{position:relative;min-height:86px;border-radius:16px;padding:9px 10px;border:1.5px solid var(--line2);background:rgba(4,24,32,.45);cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:2px;transition:transform .12s,border-color .2s}
+.cell:hover{transform:translateY(-1px);border-color:var(--mint)}
+.cell .dn{font-size:11px;font-weight:600;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+.cell .dd{font-family:var(--se);font-size:20px;line-height:1}
+.cell .st{margin-top:auto;font-size:11.5px;color:var(--soft);font-weight:500}
+.cell .light{position:absolute;top:10px;right:10px;width:14px;height:14px;border-radius:50%;border:1.5px solid rgba(147,179,179,.35)}
+.cell.blank{visibility:hidden}
+.cell.planned{border-color:rgba(255,138,122,.65)}
+.cell.planned .light{border-color:var(--coral)}
+.cell.kept{border-color:transparent;background:linear-gradient(150deg,rgba(255,92,122,.32),rgba(240,207,134,.16));box-shadow:0 0 0 1.5px rgba(255,92,122,.75),0 0 24px rgba(255,92,122,.25)}
+.cell.kept .light{background:var(--fire);border-color:transparent;box-shadow:0 0 12px 2px rgba(255,92,122,.85);animation:glow 2.4s ease-in-out infinite}
+@keyframes glow{50%{box-shadow:0 0 18px 5px rgba(255,92,122,.6)}}
+.cell.bonus{border-color:rgba(127,242,220,.7);background:rgba(127,242,220,.1)}
+.cell.bonus .light{background:var(--mint);border-color:transparent}
+.cell.missed{background:rgba(4,24,32,.3);border-style:dashed}
+.cell.missed .light{background:rgba(147,179,179,.2);border-color:transparent}
+.cell.today{box-shadow:0 0 0 2px var(--gold)}
+.cell.kept.today{box-shadow:0 0 0 2px var(--gold),0 0 24px rgba(255,92,122,.3)}
+@media (max-width:620px){.cal{gap:5px}.cell{min-height:64px;padding:6px;border-radius:12px}.cell .dn{display:none}.cell .dd{font-size:16px}.cell .st{font-size:10px}.cell .light{top:6px;right:6px;width:10px;height:10px}}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;font-size:12.5px;color:var(--soft)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:12px;height:12px;border-radius:50%;display:inline-block;border:1.5px solid rgba(147,179,179,.35)}
+.legend .l-k{background:var(--fire);border-color:transparent}.legend .l-p{border-color:var(--coral)}.legend .l-b{background:var(--mint);border-color:transparent}.legend .l-m{background:rgba(147,179,179,.2);border-color:transparent}
+.presets{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+
+/* forms */
+.form{display:grid;gap:14px}
+.field{display:grid;gap:6px;min-width:0;align-content:start}
+.field label{font-size:13px;font-weight:600;color:var(--txt)}
+.field .hint{font-size:12.5px;color:var(--muted)}
+input[type=text],input[type=number],input[type=date],select,textarea{width:100%;padding:11px 14px;border-radius:12px;border:1px solid var(--line2);background:rgba(4,24,32,.6);color:var(--txt);font-size:16px}
+textarea{min-height:84px;resize:vertical}
+input::placeholder,textarea::placeholder{color:rgba(147,179,179,.75)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--mint)}
+.sect{font-family:var(--se);font-style:italic;font-size:19px;color:var(--pink);margin-top:6px}
+.formrow{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+
+/* tables */
+.tbl{overflow-x:auto;margin-top:12px}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:640px}
+th{text-align:left;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:10px 8px;border-bottom:1px solid var(--line2)}
+td{padding:11px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+td .note{color:var(--soft);font-size:13px}
+.tag{display:inline-block;font-size:11px;font-weight:600;padding:2px 9px;border-radius:999px}
+.tag.k{background:rgba(255,92,122,.18);color:#FFB3BF}.tag.b{background:rgba(127,242,220,.14);color:var(--mint)}
+.empty{padding:28px 18px;text-align:center;color:var(--soft);border:1.5px dashed var(--line2);border-radius:16px}
+.empty b{display:block;font-family:var(--se);font-size:20px;color:var(--txt);margin-bottom:4px}
+.compare table{min-width:0}
+.compare th:not(:first-child),.compare td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums}
+
+/* growth */
+.big{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:720px){.big{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.bigtile{position:relative;overflow:hidden;padding:18px 18px 16px;border-radius:20px;background:rgba(4,24,32,.55);border:1px solid var(--line2);min-width:0}
+.bigtile .e{font-size:30px;line-height:1}
+.bigtile b{display:block;font-family:var(--se);font-size:34px;line-height:1.05;margin-top:10px}
+.bigtile span{display:block;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.bigtile::after{content:"";position:absolute;right:-30px;top:-30px;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,var(--glow,rgba(255,157,198,.18)),transparent 70%)}
+.goal{display:grid;gap:8px;padding:16px 18px;border-radius:18px;background:rgba(4,24,32,.55);border:1px solid var(--line2)}
+.goal .top{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+.goal .top b{font-weight:600}
+.goal .top span{color:var(--muted);font-size:13px}
+.bar{height:12px;border-radius:999px;background:rgba(127,242,220,.1);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:999px;background:var(--fire);box-shadow:0 0 14px rgba(255,92,122,.5);transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.bar.mint i{background:linear-gradient(90deg,#7FF2DC,#9FD8F2);box-shadow:0 0 14px rgba(127,242,220,.4)}
+.ladder{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:14px}
+@media (max-width:720px){.ladder{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.badge{text-align:center;padding:14px 8px;border-radius:18px;border:1.5px dashed var(--line2);background:rgba(4,24,32,.35);min-width:0}
+.badge .e{font-size:34px;line-height:1;filter:grayscale(1);opacity:.35}
+.badge b{display:block;font-size:13px;margin-top:8px}
+.badge small{display:block;font-size:11.5px;color:var(--muted)}
+.badge.on{border-style:solid;border-color:rgba(240,207,134,.6);background:linear-gradient(160deg,rgba(240,207,134,.14),rgba(255,157,198,.08));box-shadow:0 0 22px rgba(240,207,134,.14)}
+.badge.on .e{filter:none;opacity:1}
+.chart{width:100%;height:auto;display:block;margin-top:10px}
+.chart .grid{stroke:rgba(127,242,220,.1);stroke-width:1}
+.chart .axis{fill:var(--muted);font-size:11px;font-family:var(--sa)}
+.chart .area{fill:url(#fade)}
+.chart .lineP{fill:none;stroke:var(--pink);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+.chart .dot{fill:var(--pink);stroke:var(--bg);stroke-width:2}
+.chart .endlbl{fill:var(--txt);font-size:13px;font-weight:600;font-family:var(--sa)}
+.chart .barK{fill:var(--coral)}.chart .barB{fill:var(--mint)}
+.chart .miss{fill:rgba(147,179,179,.35)}
+.chart .plan{fill:none;stroke:rgba(255,138,122,.55);stroke-dasharray:3 3}
+.ringwrap{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.ring{width:150px;height:150px;flex:0 0 auto}
+.ring .bgc{fill:none;stroke:rgba(127,242,220,.12);stroke-width:12}
+.ring .fgc{fill:none;stroke:url(#ringg);stroke-width:12;stroke-linecap:round;transform:rotate(-90deg);transform-origin:75px 75px}
+.ring text{fill:var(--txt);font-family:var(--se);font-size:30px}
+.ring .sub{fill:var(--muted);font-family:var(--sa);font-size:10px;letter-spacing:.14em}
+
+/* resources */
+.steps{display:grid;gap:12px;margin-top:6px}
+.step{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;padding:18px 20px;border-radius:20px;background:rgba(4,24,32,.55);border:1px solid var(--line2)}
+.step .n{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-size:24px;background:var(--grad);box-shadow:0 0 22px rgba(255,157,198,.3)}
+.step .when{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.step h3{margin-top:2px}
+.step p{color:var(--soft);margin-top:6px;font-size:15px}
+.res{display:flex;gap:18px;align-items:center;flex-wrap:wrap;padding:20px;border-radius:20px;background:linear-gradient(120deg,rgba(255,157,198,.14),rgba(127,242,220,.08));border:1px solid rgba(255,157,198,.45)}
+.res .e{font-size:40px}
+.res div{flex:1;min-width:200px}
+.res p{color:var(--soft);font-size:14.5px;margin-top:4px}
+
+/* pod */
+.podtotals{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
+@media (max-width:720px){.podtotals{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.podlist{display:grid;gap:10px;margin-top:14px}
+.puff{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:14px 16px;border-radius:18px;background:rgba(4,24,32,.55);border:1px solid var(--line2);min-width:0}
+.puff.me{border-color:rgba(255,157,198,.6);box-shadow:0 0 18px rgba(255,157,198,.12)}
+.puff.host{border-color:rgba(240,207,134,.55)}
+.puff .av{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-family:var(--se);font-size:20px;color:#0A2A33;background:var(--grad)}
+.puff .who{min-width:0}
+.puff .who b{font-size:15px}
+.puff .who a{display:inline-block;color:var(--mint);font-size:13.5px;text-decoration:none;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%;vertical-align:bottom}
+.puff .stats{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.puff .stats span{font-size:12px;padding:2px 9px;border-radius:999px;background:var(--pill);border:1px solid var(--line);color:var(--soft)}
+.puff .acts{display:flex;gap:6px;align-items:center}
+.puff.done .av{opacity:.55}
+@media (max-width:560px){.puff{grid-template-columns:auto 1fr}.puff .acts{grid-column:1/-1;justify-content:flex-end}}
+.copyline{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:14px 16px;border-radius:14px;background:rgba(4,24,32,.6);border:1px dashed var(--line2);font-size:14px}
+.copyline code{flex:1;min-width:0;font-family:var(--sa);color:var(--txt);word-break:break-all}
+
+.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);opacity:0;z-index:60;padding:12px 20px;border-radius:999px;background:var(--pill);border:1.5px solid rgba(127,242,220,.5);box-shadow:0 12px 30px rgba(0,0,0,.4);font-weight:500;transition:.3s;pointer-events:none;max-width:calc(100% - 32px);text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:55}
+footer{border-top:1px solid var(--line);padding-block:22px calc(22px + env(safe-area-inset-bottom,0px));color:var(--muted);font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
+.saving{font-size:12px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="plate" aria-hidden="true"></div><div class="shade" aria-hidden="true"></div>
+  <div class="wrap in">
+    <div class="brand">
+      <div class="tt" aria-label="TikTok LIVE" role="img">
+        <svg viewBox="-1.5 -1.5 27 27" aria-hidden="true"><path fill="#25F4EE" transform="translate(-.9 -.7)" d="M12.53.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/><path fill="#FE2C55" transform="translate(.9 .7)" d="M12.53.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/><path fill="#fff" d="M12.53.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+      </div>
+      <div>
+        <div class="eyebrow">Spiritual Business Skool · TikTok LIVE challenge</div>
+        <h1>30 Days to <span class="gs">Make Waves</span></h1>
+        <p class="tag">Choose your LIVE days. Show up. Watch the lights turn on. There's no one right way, only your way and consistency.</p>
+      </div>
+    </div>
+    <div class="daybadge"><div class="orb num" id="dayOrb">1</div><div><b id="dayTitle">Day 1 of 30</b><small id="daySub">Your challenge starts today</small></div></div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Challenge sections">
+  <div class="wrap row">
+    <div class="links" id="tabs">
+      <a href="#today">🌊 Today</a>
+      <a href="#calendar">📅 My calendar</a>
+      <a href="#log">🎙️ LIVE log</a>
+      <a href="#growth">📈 Growth</a>
+      <a href="#resources">✨ TikTok LIVE resources</a>
+      <a href="#pod">🐚 The pod</a>
+      <a href="#intention">🌙 My intention</a>
+    </div>
+    <button class="btn fire sm" id="quickLog" type="button">+ Log a LIVE</button>
+  </div>
+</nav>
+
+<main class="wrap">
+  <div id="exampleBanner" class="banner" hidden style="margin-bottom:22px">
+    <p><b>You're looking at an example</b> (Luna, a made-up tarot reader). Set your intention to start your own 30 days.</p>
+    <button class="btn sm" type="button" data-go="intention">Start my challenge</button>
+  </div>
+  <div id="errBanner" class="banner err" hidden style="margin-bottom:22px"><p id="errText"></p><button class="btn ghost sm" type="button" id="errRetry">Try again</button></div>
+
+  <!-- TODAY -->
+  <section class="view" data-view="today">
+    <div class="card">
+      <div class="head">
+        <div><div class="eyebrow">Your tide line · one light per day</div><h2 id="todayHead">Day 1. Let's go.</h2><p id="todaySub"></p></div>
+        <button class="btn fire" type="button" data-go="log">+ Log today's LIVE</button>
+      </div>
+      <div class="tide" id="tide"></div>
+      <div class="legend"><span><i class="l-k"></i>Kept</span><span><i class="l-p"></i>Committed</span><span><i class="l-b"></i>Bonus LIVE</span><span><i class="l-m"></i>Missed</span></div>
+    </div>
+    <div class="grid2">
+      <div class="card flat">
+        <div class="eyebrow">Consistency</div>
+        <div class="kpis" style="margin-top:12px">
+          <div class="kpi k1"><b class="num" id="kStreak">0</b><span>🔥 Streak</span></div>
+          <div class="kpi k2"><b class="num" id="kKept">0/0</b><span>✅ Kept</span></div>
+          <div class="kpi k3"><b class="num" id="kHours">0</b><span>⏱️ Hours</span></div>
+        </div>
+        <div class="next" style="margin-top:16px">
+          <div><div class="eyebrow" style="color:var(--mint)">Next LIVE</div><div class="when" id="nextLive">Pick your days</div></div>
+          <button class="btn ghost sm" type="button" data-go="calendar">Edit my days</button>
+        </div>
+      </div>
+      <div class="intent">
+        <div class="eyebrow" style="color:var(--pink)">🌙 My intention</div>
+        <q id="intentQuote">Set your intention to see it here.</q>
+        <div class="meta" id="intentMeta"></div>
+      </div>
+    </div>
+    <div class="card flat">
+      <div class="head"><div class="eyebrow">Where you started → where you are</div><button class="btn ghost sm" type="button" data-go="growth">See my growth</button></div>
+      <div class="grid4" style="margin-top:14px" id="ftTiles"></div>
+    </div>
+  </section>
+
+  <!-- CALENDAR -->
+  <section class="view" data-view="calendar" hidden>
+    <div class="card">
+      <div class="head">
+        <div><div class="eyebrow">My commitment</div><h2>Tap the days you'll go <span class="gs">LIVE</span></h2>
+          <p>Every day you keep, the light turns red. A LIVE on a day you didn't plan shows up mint, as a bonus. Pick what you can actually keep: three days a week kept beats seven days promised.</p></div>
+      </div>
+      <div class="formrow" style="margin-top:16px;align-items:flex-end">
+        <div class="field" style="width:170px"><label for="cMinutes">Minutes per LIVE</label>
+          <select id="cMinutes"><option>15</option><option>20</option><option>30</option><option>45</option><option>60</option><option>90</option><option>120</option></select></div>
+        <div class="field" style="width:160px"><label for="cTime">Usual time</label><input type="text" id="cTime" placeholder="7pm CET"></div>
+        <div class="presets">
+          <button class="btn ghost sm" type="button" data-preset="all">Every day</button>
+          <button class="btn ghost sm" type="button" data-preset="weekdays">Weekdays</button>
+          <button class="btn ghost sm" type="button" data-preset="three">3 days a week</button>
+          <button class="btn ghost sm" type="button" data-preset="clear">Clear</button>
+        </div>
+      </div>
+      <div class="cal" id="cal"></div>
+      <div class="legend"><span><i class="l-k"></i>Kept (red light)</span><span><i class="l-p"></i>Committed</span><span><i class="l-b"></i>Bonus LIVE</span><span><i class="l-m"></i>Missed</span><span style="color:var(--gold)">Gold ring = today</span></div>
+      <p style="color:var(--muted);font-size:13px;margin-top:10px" id="calSummary"></p>
+    </div>
+  </section>
+
+  <!-- LOG -->
+  <section class="view" data-view="log" hidden>
+    <div class="card">
+      <div class="head"><div><div class="eyebrow">🎙️ Log a LIVE</div><h2>What did this one <span class="gs">turn into?</span></h2><p>Log every LIVE, even the quiet ones. A zero is data, not a verdict.</p></div></div>
+      <form class="form" id="logForm" style="margin-top:16px" novalidate>
+        <input type="hidden" id="lId">
+        <div class="grid3">
+          <div class="field"><label for="lDate">📅 Date</label><input type="date" id="lDate"></div>
+          <div class="field"><label for="lMin">⏱️ Minutes LIVE</label><input type="number" id="lMin" min="1" step="1" inputmode="numeric" placeholder="45"></div>
+          <div class="field"><label for="lFol">🫶 Followers gained</label><input type="number" id="lFol" step="1" inputmode="numeric" placeholder="0"></div>
+          <div class="field"><label for="lSkool">🏫 Skool sign-ups</label><input type="number" id="lSkool" min="0" step="1" inputmode="numeric" placeholder="0"></div>
+          <div class="field"><label for="lCust">💎 New clients or customers</label><input type="number" id="lCust" min="0" step="1" inputmode="numeric" placeholder="0"></div>
+          <div class="field"><label for="lRev">💰 Sales from this LIVE ($)</label><input type="number" id="lRev" min="0" step="1" inputmode="decimal" placeholder="0"></div>
+        </div>
+        <div class="field"><label for="lNote">What you noticed or a win (optional)</label><textarea id="lNote" placeholder="Opened with a card pull and three people asked about readings"></textarea></div>
+        <div class="formrow"><button class="btn fire" type="submit" id="lSave">Save my LIVE</button><button class="btn ghost" type="button" id="lCancel" hidden>Cancel edit</button><span id="lErr" style="color:#FFB3BF;font-size:13.5px"></span></div>
+      </form>
+    </div>
+    <div class="card flat">
+      <div class="head"><div class="eyebrow">My LIVE history</div><span style="color:var(--muted);font-size:13px" id="histCount"></span></div>
+      <div class="tbl" id="hist"></div>
+    </div>
+  </section>
+
+  <!-- GROWTH -->
+  <section class="view" data-view="growth" hidden>
+    <div class="card">
+      <div class="head"><div><div class="eyebrow">My 30 days in numbers</div><h2>Look what you're <span class="gs">building</span></h2></div></div>
+      <div class="big" style="margin-top:16px" id="bigTiles"></div>
+    </div>
+    <div class="grid2" id="goals"></div>
+    <div class="card flat">
+      <div class="eyebrow">🐚 Wave milestones</div>
+      <div class="ladder" id="ladder"></div>
+    </div>
+    <div class="grid2">
+      <div class="card"><div class="eyebrow">🫶 Followers gained over the 30 days</div><div id="chartFollow"></div></div>
+      <div class="card"><div class="eyebrow">⏱️ Minutes LIVE each day</div><div id="chartMin"></div>
+        <div class="legend"><span><i class="l-k"></i>Kept a commitment</span><span><i class="l-b"></i>Bonus LIVE</span><span><i class="l-m"></i>Missed</span></div></div>
+    </div>
+    <div class="grid2">
+      <div class="card flat"><div class="eyebrow">✅ Consistency</div>
+        <div class="ringwrap" style="margin-top:10px"><div id="ring"></div><p id="ringTxt" style="color:var(--soft);flex:1;min-width:180px"></p></div></div>
+      <div class="card flat compare"><div class="eyebrow">Day 1 vs now</div><div class="tbl" id="compare"></div></div>
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section class="view" data-view="resources" hidden>
+    <div class="card">
+      <div class="head"><div><div class="eyebrow">✨ TikTok LIVE resources</div><h2>How to run your <span class="gs">LIVE</span></h2>
+        <p>The flow I use on my own LIVEs, from the video before you go on to the moments when the room is quiet.</p></div></div>
+      <div class="steps" style="margin-top:18px">
+        <div class="step"><div class="n">🎬</div><div><div class="when">5 minutes before</div><h3>Post a video first</h3><p>Post a video about 5 minutes before you go LIVE. It pushes you out in the algorithm, so more people find your LIVE when it starts.</p></div></div>
+        <div class="step"><div class="n">🔮</div><div><div class="when">When you open</div><h3>Open with a reading or your story</h3><p>Start with a card reading or by sharing your story, and welcome people into the room as they arrive.</p></div></div>
+        <div class="step"><div class="n">🔁</div><div><div class="when">Every 5 to 10 minutes</div><h3>Repeat your intro</h3><p>People come in and out of your LIVE all the time. Say who you are and what you're doing again, so the people who just arrived know why to stay.</p></div></div>
+        <div class="step"><div class="n">🌊</div><div><div class="when">When the room is empty</div><h3>Keep talking to the algorithm</h3><p>It's totally normal for no one to be in your room at first. When you're talking, you're telling the algorithm who to send to your room. The more you repeat your keywords, the more you're telling it what to do.</p></div></div>
+      </div>
+    </div>
+    <div class="res">
+      <div class="e">🎨</div>
+      <div><div class="eyebrow" style="color:var(--pink)">Template</div><h3>TikTok LIVE sticker template</h3><p>Your on-screen sticker in Canva: your offer, who it's for, three results and your link. Make your own copy and pin it while you're LIVE.</p></div>
+      <a class="btn" href="https://canva.link/qh6rtvj3mmi6k5q" target="_blank" rel="noopener">Open in Canva</a>
+    </div>
+  </section>
+
+  <!-- POD -->
+  <section class="view" data-view="pod" hidden>
+    <div class="card">
+      <div class="head"><div><div class="eyebrow">🐚 Everyone in the challenge</div><h2>The <span class="gs">pod</span></h2>
+        <p>What all of us have built together, tracked from every LIVE anyone logs. Follow each other and show up in each other's LIVEs.</p></div>
+        <span class="saving" id="podUpdated"></span></div>
+      <div class="podtotals" id="podTotals"></div>
+    </div>
+    <div class="card flat">
+      <div class="head"><div class="eyebrow">Follow the pod on TikTok</div><span style="color:var(--muted);font-size:13px" id="podCount"></span></div>
+      <div class="podlist" id="podList"></div>
+    </div>
+  </section>
+
+  <!-- INTENTION -->
+  <section class="view" data-view="intention" hidden>
+    <div class="card" id="linkCard" hidden>
+      <div class="eyebrow" style="color:var(--mint)">🔐 Your private link</div>
+      <p style="color:var(--soft);margin-top:6px">This link opens your tracker on any phone or computer. No password needed, so keep it to yourself. Save it in your notes now.</p>
+      <div class="copyline" style="margin-top:12px"><code id="myLink"></code><button class="btn sm" type="button" id="copyLink">Copy my link</button></div>
+    </div>
+    <div class="card">
+      <div class="head"><div><div class="eyebrow">Before day 1</div><h2>Set your <span class="gs">intention</span></h2>
+        <p>Your starting numbers are what your 30 days are measured against. Your offer and your belief are what you come back to on the days you don't feel like it.</p></div></div>
+      <form class="form" id="iForm" style="margin-top:16px" novalidate>
+        <div class="sect">Who's going LIVE</div>
+        <div class="grid3">
+          <div class="field"><label for="iName">Your first name</label><input type="text" id="iName" placeholder="Luna" autocomplete="given-name"></div>
+          <div class="field"><label for="iHandle">TikTok handle</label><input type="text" id="iHandle" placeholder="@lunareadstarot" autocapitalize="off"><span class="hint">Shows in the pod so everyone can follow you.</span></div>
+          <div class="field"><label for="iStart">Challenge start date</label><input type="date" id="iStart"></div>
+        </div>
+        <div class="sect">Where you're starting</div>
+        <div class="grid4">
+          <div class="field"><label for="iFol">TikTok followers</label><input type="number" id="iFol" min="0" inputmode="numeric" placeholder="1240"></div>
+          <div class="field"><label for="iSkool">Skool members</label><input type="number" id="iSkool" min="0" inputmode="numeric" placeholder="18"></div>
+          <div class="field"><label for="iCust">Paying clients</label><input type="number" id="iCust" min="0" inputmode="numeric" placeholder="2"></div>
+          <div class="field"><label for="iRev">Monthly revenue ($)</label><input type="number" id="iRev" min="0" inputmode="decimal" placeholder="300"></div>
+        </div>
+        <div class="sect">What you're selling</div>
+        <div class="grid2">
+          <div class="field"><label for="iOffer">The offer you'll talk about on LIVE</label><input type="text" id="iOffer" placeholder="3-card career reading"></div>
+          <div class="field"><label for="iPrice">Price</label><input type="text" id="iPrice" placeholder="$77"></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="iGoalC">Clients or sales you're calling in by day 30</label><input type="number" id="iGoalC" min="0" inputmode="numeric" placeholder="5"></div>
+          <div class="field"><label for="iGoalF">Follower goal by day 30</label><input type="number" id="iGoalF" min="0" inputmode="numeric" placeholder="1500"></div>
+        </div>
+        <div class="sect">The inner work</div>
+        <div class="field"><label for="iBelief">The belief you're working on</label><input type="text" id="iBelief" placeholder="People want to hear what I have to say"><span class="hint">Write it as the new belief, in the present tense.</span></div>
+        <div class="field"><label for="iWhy">Why this matters to you</label><textarea id="iWhy" placeholder="I'm done hiding behind edited videos. I want people to meet the real me."></textarea></div>
+        <div class="field"><label for="iTopics">Things you could talk about on LIVE</label><textarea id="iTopics" placeholder="One per line&#10;Pull a card for the room&#10;How I read for career questions&#10;What a reading with me looks like"></textarea><span class="hint">One per line.</span></div>
+        <div class="formrow"><button class="btn" type="submit" id="iSave">Save my intention</button><span id="iMsg" style="font-size:13.5px;color:var(--muted)"></span></div>
+        <p style="font-size:12.5px;color:var(--muted)">The pod shows your first name, your TikTok handle, your LIVE days and your LIVE totals. Your offer, goals, belief and notes stay private to your link.</p>
+      </form>
+    </div>
+    <div class="card flat" id="topicsCard" hidden>
+      <div class="eyebrow">My LIVE topics</div>
+      <div class="meta" id="topicsList"></div>
+    </div>
+    <div class="card flat" id="leaveCard" hidden>
+      <div class="eyebrow">Leave the challenge</div>
+      <p style="color:var(--soft);margin-top:6px">Removes your tracker, your LIVEs and your spot in the pod for good.</p>
+      <div class="formrow" style="margin-top:12px"><button class="btn ghost sm" type="button" id="leaveBtn">Delete my tracker</button></div>
+      <div id="leaveConfirm" hidden class="banner err" style="margin-top:12px"><p>This deletes everything you logged. It can't be undone.</p><div class="formrow"><button class="btn fire sm" type="button" id="leaveYes">Delete everything</button><button class="btn ghost sm" type="button" id="leaveNo">Keep it</button></div></div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>30 Days to Make Waves · <a href="https://www.skool.com/amanda/about" target="_blank" rel="noopener">Spiritual Business Skool</a></span><span>Made by Amanda for her Puffins 🐧</span></div></footer>
+<canvas id="confetti" aria-hidden="true"></canvas>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF9DC6" stop-opacity=".35"/><stop offset="1" stop-color="#FF9DC6" stop-opacity="0"/></linearGradient>
+  <linearGradient id="ringg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF5C7A"/><stop offset=".6" stop-color="#FF8A7A"/><stop offset="1" stop-color="#F0CF86"/></linearGradient>
+</defs></svg>
+
+<script>
+(function(){
+"use strict";
+const API='https://dzevfnonycfvczinicdk.supabase.co/functions/v1/makewaves';
+const ME_KEY='makewaves.me', CACHE_KEY='makewaves.cache', FOL_KEY='makewaves.followed';
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+const esc=v=>String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pad=n=>String(n).padStart(2,'0');
+const iso=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+const parse=s=>{const [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d)};
+const addDays=(s,n)=>{const d=parse(s);d.setDate(d.getDate()+n);return iso(d)};
+const diff=(a,b)=>Math.round((parse(b)-parse(a))/864e5);
+const TODAY=iso(new Date());
+const WD=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const nice=s=>{const d=parse(s);return WD[d.getDay()]+' '+MON[d.getMonth()]+' '+d.getDate()};
+const short=s=>{const d=parse(s);return MON[d.getMonth()]+' '+d.getDate()};
+const N=v=>{const n=Number(v);return isFinite(n)?n:0};
+const fmt=n=>Math.round(n).toLocaleString('en-US');
+const money=n=>'$'+Math.round(n).toLocaleString('en-US');
+const hrs=m=>{const h=m/60;return h>=10?fmt(h):h.toFixed(h%1?1:0)};
+const cleanHandle=h=>String(h||'').trim().replace(/^https?:\/\/(www\.)?tiktok\.com\/@?/i,'').replace(/^@/,'').replace(/[^A-Za-z0-9._]/g,'').slice(0,40);
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
+
+/* ---------- identity ---------- */
+let ME=null;
+(function readMe(){
+  const m=location.hash.match(/me=([0-9a-f-]{36})\.([0-9a-f]{40,})/i);
+  if(m){ME={id:m[1],secret:m[2]};store.set(ME_KEY,JSON.stringify(ME));history.replaceState(null,'',location.pathname+location.search+'#today');}
+  else{try{ME=JSON.parse(store.get(ME_KEY)||'null')}catch(e){ME=null}}
+})();
+const myLink=()=>ME?location.origin+location.pathname+'#me='+ME.id+'.'+ME.secret:'';
+
+async function api(action,payload){
+  const r=await fetch(API,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(Object.assign({action},ME&&action!=='pod'&&action!=='join'?{id:ME.id,secret:ME.secret}:{},payload||{}))});
+  let j={}; try{j=await r.json()}catch(e){}
+  if(!r.ok) { const err=new Error(j.error||'Something went wrong. Try again in a moment'); err.status=r.status; throw err; }
+  return j;
+}
+
+/* ---------- state ---------- */
+function blank(){return{example:false,profile:{start:TODAY},commit:{days:[],minutes:30,time:''},lives:[]}}
+function example(){
+  const start=addDays(TODAY,-11), days=[], lives=[];
+  for(let i=0;i<30;i++){const d=addDays(start,i), w=parse(d).getDay(); if(w===2||w===4||w===6||w===0) days.push(d);}
+  const past=days.filter(d=>d<TODAY), seeds=[[38,12,1,0,0,'Shaky start. Pulled one card for the room and 9 people stayed the whole time.'],[45,21,0,1,77,'Someone booked a career reading straight from the LIVE.'],[30,4,0,0,0,''],[52,33,2,0,0,'Repeated my intro every 10 minutes. Two Skool joins.'],[60,28,1,1,77,'Second reading booked.']];
+  past.forEach((d,i)=>{ if(i===2) return; const s=seeds[i%seeds.length]; lives.push({id:'ex'+i,date:d,minutes:s[0],followers:s[1],skool:s[2],customers:s[3],revenue:s[4],note:s[5]}); });
+  const bonus=addDays(start,4); if(bonus<TODAY&&!days.includes(bonus)) lives.push({id:'exb',date:bonus,minutes:20,followers:9,skool:0,customers:0,revenue:0,note:'Bonus LIVE from the kitchen.'});
+  return{example:true,profile:{name:'Luna',handle:'lunareadstarot',start,startFollowers:1240,startSkool:18,startCustomers:2,startRevenue:300,offer:'3-card career reading',price:'$77',goalClients:5,goalFollowers:1500,belief:'People want to hear what I have to say',why:"I'm done hiding behind edited videos. I want people to meet the real me.",topics:'Pull a card for the room\nHow I read for career questions\nWhat a reading with me looks like'},commit:{days,minutes:45,time:'7pm'},lives};
+}
+let S;
+if(ME){ try{S=JSON.parse(store.get(CACHE_KEY)||'null')}catch(e){S=null} if(!S||!S.profile) S=blank(); S.example=false; }
+else S=example();
+const cache=()=>{ if(ME&&!S.example) store.set(CACHE_KEY,JSON.stringify(S)); };
+let FOLLOWED={}; try{FOLLOWED=JSON.parse(store.get(FOL_KEY)||'{}')||{}}catch(e){}
+let POD=null;
+
+/* ---------- derived ---------- */
+const challengeDays=()=>{const s=S.profile.start||TODAY;return Array.from({length:30},(_,i)=>addDays(s,i))};
+const livesOn=d=>S.lives.filter(l=>l.date===d);
+function status(d){const c=S.commit.days.includes(d), l=livesOn(d).length>0;
+  if(c&&l) return 'kept'; if(l) return 'bonus'; if(c&&d<TODAY) return 'missed'; if(c) return 'planned'; return 'rest';}
+const dayNum=()=>Math.min(30,Math.max(0,diff(S.profile.start||TODAY,TODAY)+1));
+function stats(){
+  const cd=challengeDays(), dueC=S.commit.days.filter(d=>cd.includes(d)&&d<=TODAY&&!(d===TODAY&&!livesOn(d).length));
+  const keptN=dueC.filter(d=>livesOn(d).length).length;
+  let streak=0; for(const d of dueC.slice().sort().reverse()){ if(livesOn(d).length) streak++; else break; }
+  const sum=k=>S.lives.reduce((a,l)=>a+N(l[k]),0), p=S.profile;
+  return{keptN,due:dueC.length,totalC:S.commit.days.filter(d=>cd.includes(d)).length,streak,minutes:sum('minutes'),fol:sum('followers'),skool:sum('skool'),cust:sum('customers'),rev:sum('revenue'),lives:S.lives.length,
+    pct:dueC.length?Math.round(100*keptN/dueC.length):0,nowF:N(p.startFollowers)+sum('followers'),nowS:N(p.startSkool)+sum('skool'),nowC:N(p.startCustomers)+sum('customers')};
+}
+
+/* ---------- render ---------- */
+function renderHeader(){
+  const n=dayNum(), st=S.profile.start||TODAY;
+  $('#dayOrb').textContent=String(n);
+  if(diff(st,TODAY)<0){$('#dayTitle').textContent='Starts '+nice(st);$('#daySub').textContent=(-diff(st,TODAY))+' days to go';}
+  else if(diff(st,TODAY)>29){$('#dayTitle').textContent='30 days complete 🌊';$('#daySub').textContent='Look at what you built';}
+  else{$('#dayTitle').textContent='Day '+n+' of 30';$('#daySub').textContent=(S.profile.name?S.profile.name+', ':'')+(30-n)+' days left';}
+  $('#exampleBanner').hidden=!S.example;
+  $('#linkCard').hidden=!ME; $('#leaveCard').hidden=!ME; if(ME) $('#myLink').textContent=myLink();
+  $('#iSave').textContent=ME?'Save my intention':'Start my 30 days';
+}
+function renderToday(){
+  const s=stats(), n=dayNum(), t=status(TODAY);
+  $('#todayHead').textContent= t==='kept'?'Today\'s light is on 🔥':t==='planned'?'Today is a LIVE day.':t==='bonus'?'Bonus LIVE today. Look at you.':(n>=1&&n<=30?'Day '+n+'. Rest or go bonus.':'Your 30 days');
+  $('#todaySub').textContent= t==='planned'?('You committed to '+S.commit.minutes+' minutes'+(S.commit.time?' at '+S.commit.time:'')+'. Log it when you come off.'):(s.totalC?s.totalC+' LIVE days on your calendar.':'Pick your LIVE days on the calendar to light up your tide line.');
+  $('#tide').innerHTML=challengeDays().map((d,i)=>`<i class="${status(d)}${d===TODAY?' today':''}" title="Day ${i+1} · ${esc(nice(d))}"></i>`).join('');
+  $('#kStreak').textContent=s.streak; $('#kKept').textContent=s.keptN+'/'+s.due; $('#kHours').textContent=hrs(s.minutes);
+  const nxt=S.commit.days.filter(d=>d>=TODAY&&!(d===TODAY&&livesOn(d).length)).sort()[0];
+  $('#nextLive').textContent= nxt?(nxt===TODAY?'Today':nice(nxt))+' · '+S.commit.minutes+' min'+(S.commit.time?' · '+S.commit.time:''):'Pick your days';
+  const p=S.profile;
+  $('#intentQuote').textContent=p.belief||'Set your intention to see it here.';
+  const meta=[]; if(p.offer) meta.push(['🔮 Selling',p.offer+(p.price?' · '+p.price:'')]); if(p.goalClients) meta.push(['💎 Calling in',p.goalClients+' clients']); if(p.goalFollowers) meta.push(['🎯 Follower goal',fmt(p.goalFollowers)]);
+  $('#intentMeta').innerHTML=meta.map(m=>`<span class="chip">${esc(m[0])} <b>${esc(m[1])}</b></span>`).join('');
+  const tile=(e,lbl,from,now)=>{const d=now-from;return `<div class="ft"><div class="lbl"><span class="em">${e}</span>${lbl}</div><div class="now num">${fmt(now)}</div><div class="from">from ${fmt(from)} on day 1</div><span class="delta${d?'':' zero'}">${d>0?'+':''}${fmt(d)}</span></div>`};
+  $('#ftTiles').innerHTML=tile('🫶','Followers',N(p.startFollowers),s.nowF)+tile('🏫','Skool',N(p.startSkool),s.nowS)+tile('💎','Clients',N(p.startCustomers),s.nowC)+`<div class="ft"><div class="lbl"><span class="em">💰</span>Sales</div><div class="now num">${money(s.rev)}</div><div class="from">from ${s.lives} LIVE${s.lives===1?'':'s'}</div><span class="delta${s.rev?'':' zero'}">${s.cust} new client${s.cust===1?'':'s'}</span></div>`;
+}
+function renderCal(){
+  const cd=challengeDays(), off=parse(cd[0]).getDay();
+  let h=WD.map(w=>`<div class="wd">${w}</div>`).join('')+'<div class="cell blank"></div>'.repeat(off);
+  cd.forEach((d,i)=>{const st=status(d), mins=livesOn(d).reduce((a,l)=>a+N(l.minutes),0);
+    const lbl=st==='kept'?mins+' min ✓':st==='bonus'?mins+' min bonus':st==='missed'?'missed':st==='planned'?S.commit.minutes+' min':'';
+    h+=`<button type="button" class="cell ${st}${d===TODAY?' today':''}" data-day="${d}" aria-pressed="${S.commit.days.includes(d)}" aria-label="Day ${i+1}, ${esc(nice(d))}, ${st}"><span class="dn">Day ${i+1}</span><span class="dd">${parse(d).getDate()}</span><span class="st">${esc(lbl)}</span><span class="light"></span></button>`;});
+  $('#cal').innerHTML=h;
+  const sel=$('#cMinutes'); if(![...sel.options].some(o=>o.value===String(S.commit.minutes))) sel.add(new Option(String(S.commit.minutes)));
+  sel.value=String(S.commit.minutes); if(document.activeElement!==$('#cTime')) $('#cTime').value=S.commit.time||'';
+  const s=stats(); $('#calSummary').textContent=s.totalC+' LIVE days committed · '+fmt(s.totalC*S.commit.minutes)+' minutes on the calendar · tap a day to add or remove it';
+}
+function renderLog(){
+  if(!$('#lDate').value) $('#lDate').value=TODAY;
+  const rows=S.lives.slice().sort((a,b)=>b.date.localeCompare(a.date));
+  $('#histCount').textContent=rows.length?rows.length+' LIVE'+(rows.length===1?'':'s')+' logged':'';
+  if(!rows.length){$('#hist').innerHTML='<div class="empty"><b>No LIVEs logged yet</b>Your first one goes above. Even 10 minutes counts.</div>';return;}
+  $('#hist').innerHTML=`<table><thead><tr><th>Date</th><th></th><th class="n">Minutes</th><th class="n">Followers</th><th class="n">Skool</th><th class="n">Clients</th><th class="n">Sales</th><th>Notes</th><th></th></tr></thead><tbody>${rows.map(l=>{const c=S.commit.days.includes(l.date);return `<tr><td>${esc(short(l.date))}</td><td><span class="tag ${c?'k':'b'}">${c?'Kept':'Bonus'}</span></td><td class="n">${fmt(N(l.minutes))}</td><td class="n">${N(l.followers)>0?'+':''}${fmt(N(l.followers))}</td><td class="n">${fmt(N(l.skool))}</td><td class="n">${fmt(N(l.customers))}</td><td class="n">${N(l.revenue)?money(N(l.revenue)):'–'}</td><td><span class="note">${esc(l.note||'')}</span></td><td style="white-space:nowrap"><button class="btn ghost icon" type="button" data-edit="${esc(l.id)}">Edit</button> <button class="btn ghost icon" type="button" data-del="${esc(l.id)}" aria-label="Delete">✕</button></td></tr>`}).join('')}</tbody></table>`;
+}
+const MILES=[['🐚','First LIVE','1 LIVE',s=>s.lives>=1],['🐠','Finding your flow','5 LIVEs',s=>s.lives>=5],['🔥','On a roll','3 kept in a row',s=>s.streak>=3],['⏱️','Ten hours on air','600 minutes',s=>s.minutes>=600],['💎','First client','from a LIVE',s=>s.cust>=1],['🧜‍♀️','Mermaid status','20 LIVEs',s=>s.lives>=20]];
+function renderGrowth(){
+  const s=stats(), p=S.profile;
+  const big=[['🎙️',fmt(s.lives),'LIVEs done','rgba(255,92,122,.22)'],['⏱️',hrs(s.minutes),'Hours on air','rgba(240,207,134,.2)'],['🫶','+'+fmt(s.fol),'Followers gained','rgba(255,157,198,.22)'],['🏫',fmt(s.skool),'Skool sign-ups','rgba(127,242,220,.2)'],['💎',fmt(s.cust),'New clients','rgba(228,204,255,.22)'],['💰',money(s.rev),'Sales from LIVEs','rgba(240,207,134,.2)']];
+  $('#bigTiles').innerHTML=big.map(b=>`<div class="bigtile" style="--glow:${b[3]}"><div class="e">${b[0]}</div><b class="num">${esc(b[1])}</b><span>${b[2]}</span></div>`).join('');
+  const pc=(a,b)=>b?Math.min(100,Math.round(100*a/b)):0;
+  const g=[];
+  const fg=N(p.goalFollowers), fs=N(p.startFollowers);
+  if(fg>fs) g.push(['🎯','Follower goal',fmt(s.nowF)+' of '+fmt(fg),pc(s.nowF-fs,fg-fs),'']);
+  if(N(p.goalClients)) g.push(['💎','Clients called in',s.cust+' of '+p.goalClients,pc(s.cust,p.goalClients),'']);
+  g.push(['✅','Commitments kept',s.keptN+' of '+s.totalC+' LIVE days',pc(s.keptN,s.totalC),'mint']);
+  g.push(['🌊','Through the 30 days','Day '+dayNum()+' of 30',pc(dayNum(),30),'mint']);
+  $('#goals').innerHTML=g.map(x=>`<div class="goal"><div class="top"><b>${x[0]} ${x[1]}</b><span>${esc(x[2])} · ${x[3]}%</span></div><div class="bar ${x[4]}"><i style="width:${x[3]}%"></i></div></div>`).join('');
+  $('#ladder').innerHTML=MILES.map(m=>`<div class="badge ${m[3](s)?'on':''}"><div class="e">${m[0]}</div><b>${m[1]}</b><small>${m[2]}</small></div>`).join('');
+  const cd=challengeDays(), last=Math.max(0,Math.min(29,diff(cd[0],TODAY)));
+  let cum=0; const pts=[]; for(let i=0;i<=last;i++){cum+=livesOn(cd[i]).reduce((a,l)=>a+N(l.followers),0);pts.push(cum);}
+  const W=640,H=230,L=44,R=16,T=18,B=30, max=Math.max(10,Math.ceil(Math.max(...pts,0)*1.2/10)*10);
+  const x=i=>L+(W-L-R)*i/29, y=v=>T+(H-T-B)*(1-v/max);
+  const axis=(ys,f)=>{let o='';ys.forEach(v=>{o+=`<line class="grid" x1="${L}" x2="${W-R}" y1="${f(v)}" y2="${f(v)}"/><text class="axis" x="${L-8}" y="${f(v)+4}" text-anchor="end">${fmt(v)}</text>`});[0,9,19,29].forEach(i=>{o+=`<text class="axis" x="${x(i)}" y="${H-8}" text-anchor="middle">Day ${i+1}</text>`});return o};
+  if(dayNum()<1) $('#chartFollow').innerHTML='<div class="empty" style="margin-top:12px"><b>Your line starts on day 1</b>Log your first LIVE and it begins to climb.</div>';
+  else{const line=pts.map((v,i)=>(i?'L':'M')+x(i).toFixed(1)+' '+y(v).toFixed(1)).join(' '), li=pts.length-1;
+    $('#chartFollow').innerHTML=`<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Followers gained so far: ${pts[li]}">${axis([0,max/2,max],y)}<path class="area" d="${line} L${x(li).toFixed(1)} ${y(0)} L${x(0)} ${y(0)} Z"/><path class="lineP" d="${line}"/><circle class="dot" cx="${x(li)}" cy="${y(pts[li])}" r="5"/><text class="endlbl" x="${Math.min(Math.max(x(li),L+20),W-R-30)}" y="${Math.max(y(pts[li])-12,14)}" text-anchor="middle">+${fmt(pts[li])}</text></svg>`;}
+  const mins=cd.map(d=>livesOn(d).reduce((a,l)=>a+N(l.minutes),0)), mmax=Math.max(30,Math.ceil(Math.max(...mins,S.commit.minutes)*1.15/15)*15);
+  const y2=v=>T+(H-T-B)*(1-v/mmax), bw=(W-L-R)/30*0.66;
+  let b=axis([0,mmax/2,mmax],y2);
+  cd.forEach((d,i)=>{const st=status(d), cx=x(i)-bw/2;
+    if(mins[i]) b+=`<rect class="${st==='kept'?'barK':'barB'}" x="${cx.toFixed(1)}" y="${y2(mins[i]).toFixed(1)}" width="${bw.toFixed(1)}" height="${(y2(0)-y2(mins[i])).toFixed(1)}" rx="2"><title>${esc(short(d))}: ${mins[i]} min</title></rect>`;
+    else if(st==='missed') b+=`<circle class="miss" cx="${x(i)}" cy="${y2(0)-4}" r="3"/>`;
+    else if(st==='planned') b+=`<rect class="plan" x="${cx.toFixed(1)}" y="${y2(S.commit.minutes).toFixed(1)}" width="${bw.toFixed(1)}" height="${(y2(0)-y2(S.commit.minutes)).toFixed(1)}" rx="2"/>`;});
+  $('#chartMin').innerHTML=`<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Minutes LIVE per day">${b}</svg>`;
+  const C=2*Math.PI*60;
+  $('#ring').innerHTML=`<svg class="ring" viewBox="0 0 150 150" role="img" aria-label="${s.pct}% of commitments kept"><circle class="bgc" cx="75" cy="75" r="60"/><circle class="fgc" cx="75" cy="75" r="60" stroke-dasharray="${(C*s.pct/100).toFixed(1)} ${C.toFixed(1)}"/><text x="75" y="80" text-anchor="middle">${s.pct}%</text><text class="sub" x="75" y="100" text-anchor="middle">KEPT</text></svg>`;
+  $('#ringTxt').innerHTML=s.due?`You kept <b>${s.keptN} of ${s.due}</b> LIVE commitments so far, for <b>${fmt(s.minutes)} minutes</b> on air. Run right now: <b>${s.streak}</b> in a row 🔥`:'Your consistency score starts with your first committed day.';
+  const r=(a,b2,c)=>`<tr><td>${a}</td><td>${b2}</td><td>${c}</td></tr>`;
+  $('#compare').innerHTML=`<table><thead><tr><th></th><th>Day 1</th><th>Now</th></tr></thead><tbody>${r('🫶 TikTok followers',fmt(N(p.startFollowers)),fmt(s.nowF))}${r('🏫 Skool members',fmt(N(p.startSkool)),fmt(s.nowS))}${r('💎 Clients',fmt(N(p.startCustomers)),fmt(s.nowC))}${r('💰 Sales from LIVEs','$0',money(s.rev))}${r('🎙️ LIVEs done','0',fmt(s.lives))}${r('⏱️ Hours on air','0',hrs(s.minutes))}</tbody></table>`;
+}
+function renderPod(){
+  if(!POD){$('#podTotals').innerHTML='<div class="empty" style="grid-column:1/-1"><b>Loading the pod…</b></div>';$('#podList').innerHTML='';return;}
+  const t=POD.totals||{};
+  const tiles=[['🐧',fmt(N(t.members)),'Puffins in the challenge','rgba(228,204,255,.22)'],['🫶','+'+fmt(N(t.followers)),'Followers gained','rgba(255,157,198,.22)'],['💰',money(N(t.revenue)),'Sales from LIVEs','rgba(240,207,134,.2)'],['⏱️',hrs(N(t.minutes)),'Hours LIVE together','rgba(255,92,122,.22)'],['🎙️',fmt(N(t.lives)),'LIVEs logged','rgba(127,242,220,.2)'],['💎',fmt(N(t.customers)),'New clients','rgba(228,204,255,.22)']];
+  $('#podTotals').innerHTML=tiles.map(b=>`<div class="bigtile" style="--glow:${b[3]}"><div class="e">${b[0]}</div><b class="num">${esc(b[1])}</b><span>${b[2]}</span></div>`).join('');
+  const mine=cleanHandle(S.profile.handle).toLowerCase();
+  const list=[{name:'Amanda',handle:'amandafieldingsmith',host:true},...(POD.members||[]).filter(m=>cleanHandle(m.handle).toLowerCase()!=='amandafieldingsmith').sort((a,b)=>N(b.lives)-N(a.lives)||N(b.minutes)-N(a.minutes))];
+  $('#podCount').textContent=(POD.members||[]).length+' on TikTok';
+  $('#podList').innerHTML=list.map(m=>{const h=cleanHandle(m.handle); if(!h) return ''; const me=!m.host&&h.toLowerCase()===mine&&!!ME, f=!!FOLLOWED[h.toLowerCase()];
+    const days=(m.liveDays||[]).map(d=>WD[d]).join(' · ');
+    const stats=m.host?['Your host']:[`🎙️ ${fmt(N(m.lives))} LIVE${N(m.lives)===1?'':'s'}`,`⏱️ ${hrs(N(m.minutes))} h`,`🫶 +${fmt(N(m.followers))}`].concat(N(m.due)?[`✅ ${N(m.kept)}/${N(m.due)} kept`]:[]).concat(days?[`📅 ${days}${m.time?' · '+m.time:''}`]:[]);
+    return `<div class="puff${m.host?' host':''}${me?' me':''}${f?' done':''}"><div class="av">${esc((m.name||h)[0].toUpperCase())}</div><div class="who"><b>${esc(m.name||'Puffin')}${me?' (you)':''}</b> <a href="https://www.tiktok.com/@${encodeURIComponent(h)}" target="_blank" rel="noopener">@${esc(h)}</a><div class="stats">${stats.map(x=>`<span>${esc(x)}</span>`).join('')}</div></div><div class="acts">${me?'':`<a class="btn sm" href="https://www.tiktok.com/@${encodeURIComponent(h)}" target="_blank" rel="noopener">Follow</a><button class="btn ghost icon" type="button" data-fol="${esc(h.toLowerCase())}" aria-pressed="${f}" title="Mark as followed">${f?'✓ Followed':'○'}</button>`}</div></div>`}).join('');
+}
+function renderIntent(){
+  const p=S.example?{start:TODAY}:S.profile, set=(id,v)=>{const el=$(id); if(document.activeElement!==el) el.value=v==null?'':v};
+  set('#iName',p.name); set('#iHandle',p.handle?'@'+cleanHandle(p.handle):''); set('#iStart',p.start||TODAY);
+  [['#iFol','startFollowers'],['#iSkool','startSkool'],['#iCust','startCustomers'],['#iRev','startRevenue'],['#iGoalC','goalClients'],['#iGoalF','goalFollowers']].forEach(([id,k])=>set(id,p[k]==null?'':p[k]));
+  set('#iOffer',p.offer); set('#iPrice',p.price); set('#iBelief',p.belief); set('#iWhy',p.why); set('#iTopics',p.topics);
+  const t=String(S.profile.topics||'').split('\n').map(s=>s.trim()).filter(Boolean);
+  $('#topicsCard').hidden=!t.length; $('#topicsList').innerHTML=t.map(x=>`<span class="chip">${esc(x)}</span>`).join('');
+}
+function renderAll(){renderHeader();renderToday();renderCal();renderLog();renderGrowth();renderPod();renderIntent();}
+
+/* ---------- routing ---------- */
+const VIEWS=['today','calendar','log','growth','resources','pod','intention'];
+function route(){const v=VIEWS.includes(location.hash.slice(1))?location.hash.slice(1):'today';
+  $$('[data-view]').forEach(s=>s.hidden=s.dataset.view!==v); $$('#tabs a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+v));
+  const on=$('#tabs a.on'); if(on&&on.scrollIntoView) on.scrollIntoView({block:'nearest',inline:'center'});
+  if(v==='pod') loadPod();}
+function go(v){ if(location.hash==='#'+v) route(); else location.hash=v; const top=$('nav.tabs').offsetTop; if(window.scrollY>top) window.scrollTo({top,behavior:'smooth'}); }
+window.addEventListener('hashchange',route);
+document.addEventListener('click',e=>{const g=e.target.closest('[data-go]'); if(g){e.preventDefault();go(g.dataset.go);}});
+$('#quickLog').addEventListener('click',()=>{ if(!ME){go('intention');toast('Set your intention first to start logging');return;} resetLogForm();go('log');setTimeout(()=>$('#lMin').focus(),250)});
+
+/* ---------- saving ---------- */
+function needMe(){ if(ME) return true; go('intention'); toast('Set your intention first. That starts your 30 days.'); return false; }
+function showErr(msg){$('#errText').textContent=msg;$('#errBanner').hidden=false;}
+$('#errRetry').addEventListener('click',()=>{$('#errBanner').hidden=true;sync();});
+let saveT=null;
+function saveCommit(){ cache(); renderAll(); clearTimeout(saveT); saveT=setTimeout(()=>api('save',{commit:S.commit}).catch(e=>toast(e.message)),700); }
+
+/* ---------- calendar ---------- */
+$('#cal').addEventListener('click',e=>{const c=e.target.closest('[data-day]'); if(!c||!needMe()) return; const d=c.dataset.day, i=S.commit.days.indexOf(d);
+  if(i>=0) S.commit.days.splice(i,1); else S.commit.days.push(d); S.commit.days.sort(); saveCommit();});
+$('#cMinutes').addEventListener('change',e=>{ if(!needMe()){renderCal();return;} S.commit.minutes=N(e.target.value)||30; saveCommit();});
+$('#cTime').addEventListener('change',e=>{ if(!needMe()){renderCal();return;} S.commit.time=e.target.value.trim().slice(0,30); saveCommit();});
+$$('[data-preset]').forEach(b=>b.addEventListener('click',()=>{ if(!needMe()) return; const cd=challengeDays(), k=b.dataset.preset;
+  const keep=S.commit.days.filter(d=>d<TODAY); let pick=cd.filter(d=>d>=TODAY);
+  if(k==='weekdays') pick=pick.filter(d=>{const w=parse(d).getDay();return w>0&&w<6});
+  if(k==='three') pick=pick.filter(d=>[2,4,6].includes(parse(d).getDay()));
+  if(k==='clear') pick=[];
+  S.commit.days=[...new Set([...keep,...pick])].sort(); saveCommit(); toast(k==='clear'?'Upcoming days cleared':'Your LIVE days are set 📅');}));
+
+/* ---------- log ---------- */
+function resetLogForm(){['#lId','#lMin','#lFol','#lSkool','#lCust','#lRev','#lNote'].forEach(s=>$(s).value='');$('#lDate').value=TODAY;$('#lSave').textContent='Save my LIVE';$('#lCancel').hidden=true;$('#lErr').textContent='';}
+$('#lCancel').addEventListener('click',resetLogForm);
+$('#logForm').addEventListener('submit',async e=>{e.preventDefault(); if(!needMe()) return;
+  const date=$('#lDate').value, minutes=N($('#lMin').value);
+  if(!date){$('#lErr').textContent='Pick the date you went LIVE.';return;}
+  if(minutes<1){$('#lErr').textContent='Add how many minutes you were LIVE.';return;}
+  const id=$('#lId').value, live={id:id||undefined,date,minutes,followers:N($('#lFol').value),skool:N($('#lSkool').value),customers:N($('#lCust').value),revenue:N($('#lRev').value),note:$('#lNote').value.trim().slice(0,500)};
+  const btn=$('#lSave'); btn.disabled=true; btn.textContent='Saving…';
+  try{
+    const wasLit=livesOn(date).length>0, r=await api('log',{live});
+    if(id){const i=S.lives.findIndex(l=>l.id===id); if(i>=0) S.lives[i]=r.live; else S.lives.push(r.live);} else S.lives.push(r.live);
+    cache(); resetLogForm(); renderAll(); POD=null;
+    if(!id){ celebrate(); const s=stats(), c=S.commit.days.includes(date);
+      toast(c&&!wasLit?(s.streak>1?`Light's on 🔥 ${s.streak} in a row.`:'Commitment kept. Light\'s on 🔥'):'LIVE logged. Look at you 🌊'); }
+    else toast('LIVE updated');
+  }catch(err){$('#lErr').textContent=err.message;}
+  finally{btn.disabled=false; if(btn.textContent==='Saving…') btn.textContent=$('#lId').value?'Save changes':'Save my LIVE';}
+});
+$('#hist').addEventListener('click',async e=>{const ed=e.target.closest('[data-edit]'), dl=e.target.closest('[data-del]');
+  if(ed){const l=S.lives.find(x=>x.id===ed.dataset.edit); if(!l) return; $('#lId').value=l.id;$('#lDate').value=l.date;$('#lMin').value=l.minutes;$('#lFol').value=l.followers||'';$('#lSkool').value=l.skool||'';$('#lCust').value=l.customers||'';$('#lRev').value=l.revenue||'';$('#lNote').value=l.note||'';$('#lSave').textContent='Save changes';$('#lCancel').hidden=false;$('#logForm').scrollIntoView({behavior:'smooth',block:'start'});}
+  if(dl){ if(!needMe()) return;
+    if(!dl.dataset.armed){dl.dataset.armed='1';dl.textContent='Delete?';setTimeout(()=>{if(dl.isConnected){delete dl.dataset.armed;dl.textContent='✕'}},3000);return;}
+    try{await api('unlog',{liveId:dl.dataset.del}); S.lives=S.lives.filter(x=>x.id!==dl.dataset.del); cache(); renderAll(); POD=null; toast('LIVE removed');}catch(err){toast(err.message);} }
+});
+
+/* ---------- intention ---------- */
+$('#iForm').addEventListener('submit',async e=>{e.preventDefault(); const v=s=>$(s).value.trim();
+  if(!v('#iName')){$('#iMsg').textContent='Add your first name.';return;}
+  if(!cleanHandle(v('#iHandle'))){$('#iMsg').textContent='Add your TikTok handle so the pod can follow you.';return;}
+  const profile={name:v('#iName').slice(0,40),handle:cleanHandle(v('#iHandle')),start:v('#iStart')||TODAY,startFollowers:N(v('#iFol')),startSkool:N(v('#iSkool')),startCustomers:N(v('#iCust')),startRevenue:N(v('#iRev')),offer:v('#iOffer').slice(0,120),price:v('#iPrice').slice(0,30),goalClients:N(v('#iGoalC')),goalFollowers:N(v('#iGoalF')),belief:v('#iBelief').slice(0,200),why:v('#iWhy').slice(0,600),topics:v('#iTopics').slice(0,1500)};
+  const btn=$('#iSave'); btn.disabled=true; $('#iMsg').textContent='Saving…';
+  try{
+    if(!ME){
+      const commit={days:[],minutes:30,time:''}, r=await api('join',{profile,commit});
+      ME={id:r.id,secret:r.secret}; store.set(ME_KEY,JSON.stringify(ME));
+      S={example:false,profile,commit,lives:[]}; cache(); POD=null; renderAll();
+      $('#iMsg').textContent='Your 30 days have started.'; celebrate(); toast('Welcome to the pod 🐚 Now pick your LIVE days.');
+      $('#linkCard').scrollIntoView({behavior:'smooth',block:'start'});
+      setTimeout(()=>go('calendar'),2600);
+    } else {
+      await api('save',{profile}); S.profile=profile; const cd=challengeDays(); S.commit.days=S.commit.days.filter(d=>cd.includes(d)); await api('save',{commit:S.commit});
+      cache(); POD=null; renderAll(); $('#iMsg').textContent='Saved.'; toast('Intention saved 🌙');
+    }
+  }catch(err){$('#iMsg').textContent=err.message;}
+  finally{btn.disabled=false;}
+});
+$('#copyLink').addEventListener('click',()=>copy(myLink(),'Private link copied. Save it somewhere safe 🔐'));
+$('#leaveBtn').addEventListener('click',()=>{$('#leaveConfirm').hidden=false;});
+$('#leaveNo').addEventListener('click',()=>{$('#leaveConfirm').hidden=true;});
+$('#leaveYes').addEventListener('click',async()=>{try{await api('leave');}catch(err){ if(err.status!==401){toast(err.message);return;} }
+  ME=null; store.del(ME_KEY); store.del(CACHE_KEY); S=example(); POD=null; $('#leaveConfirm').hidden=true; renderAll(); go('today'); toast('Your tracker was deleted');});
+
+/* ---------- pod ---------- */
+let podT=0;
+async function loadPod(force){ if(POD&&!force&&Date.now()-podT<60000) return; try{POD=await api('pod'); podT=Date.now(); $('#podUpdated').textContent='Updated just now';}catch(err){ if(!POD) $('#podTotals').innerHTML='<div class="empty" style="grid-column:1/-1"><b>The pod didn\'t load</b>Check your connection and open this tab again.</div>'; return;} renderPod(); }
+$('#podList').addEventListener('click',e=>{const b=e.target.closest('[data-fol]'); if(!b) return; const k=b.dataset.fol; if(FOLLOWED[k]) delete FOLLOWED[k]; else FOLLOWED[k]=1; store.set(FOL_KEY,JSON.stringify(FOLLOWED)); renderPod();});
+
+/* ---------- utils ---------- */
+function copy(text,msg){const done=()=>toast(msg); try{navigator.clipboard.writeText(text).then(done,()=>fallback(text,msg));}catch(e){fallback(text,msg);}}
+function fallback(text,msg){const t=document.createElement('textarea');t.value=text;t.setAttribute('readonly','');t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();let ok=false;try{ok=document.execCommand('copy')}catch(e){}t.remove();toast(ok?msg:'Press and hold the link to copy it');}
+let tt; function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),3400);}
+function celebrate(){ if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const c=$('#confetti'), x=c.getContext('2d'), dpr=Math.min(2,window.devicePixelRatio||1); c.width=innerWidth*dpr;c.height=innerHeight*dpr;x.setTransform(dpr,0,0,dpr,0,0);
+  const cols=['#FF5C7A','#FF8A7A','#F0CF86','#FF9DC6','#E4CCFF','#7FF2DC','#25F4EE'], P=[];
+  for(let i=0;i<180;i++){const bub=i%5===0;P.push({x:innerWidth/2+(Math.random()-.5)*innerWidth*.3,y:innerHeight*.62,vx:(Math.random()-.5)*15,vy:-Math.random()*16-7,s:bub?4+Math.random()*7:5+Math.random()*6,r:Math.random()*6,vr:(Math.random()-.5)*.35,c:cols[i%cols.length],bub});}
+  const t0=performance.now();
+  (function f(t){const el=t-t0; x.clearRect(0,0,innerWidth,innerHeight);
+    P.forEach(p=>{p.vy+=p.bub?.12:.42;p.vx*=.99;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;x.globalAlpha=Math.max(0,1-el/2800);
+      if(p.bub){x.strokeStyle='rgba(247,242,234,.8)';x.lineWidth=1.2;x.beginPath();x.arc(p.x,p.y,p.s,0,7);x.stroke();}
+      else{x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle=p.c;x.fillRect(-p.s/2,-p.s/4,p.s,p.s/2);x.restore();}});
+    if(el<2800) requestAnimationFrame(f); else x.clearRect(0,0,innerWidth,innerHeight);})(t0);
+}
+
+/* ---------- boot ---------- */
+async function sync(){ if(!ME) return;
+  try{const r=await api('get'); S={example:false,profile:r.profile||{start:TODAY},commit:Object.assign({days:[],minutes:30,time:''},r.commit||{}),lives:r.lives||[]}; cache(); $('#errBanner').hidden=true; renderAll();}
+  catch(err){ if(err.status===401){ ME=null; store.del(ME_KEY); store.del(CACHE_KEY); S=example(); renderAll(); showErr('That private link doesn\'t open a tracker anymore. Start a new one in My intention.'); }
+    else showErr('Your tracker didn\'t load. Check your connection. What you see may be out of date.'); }
+}
+renderAll(); route(); sync();
+})();
+</script>
+</body>
+</html>
