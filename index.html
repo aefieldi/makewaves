@@ -491,36 +491,35 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
     </div>
     <div class="card">
       <div class="head"><div><div class="eyebrow">Before day 1</div><h2>Set your <span class="gs">intention</span></h2>
-        <p>Your starting numbers are what your 30 days are measured against. Your offer and your belief are what you come back to on the days you don't feel like it.</p></div></div>
+        <p>Your starting numbers are what your 30 days are measured against. Your offer and your why are what you come back to on the days you don't feel like it.</p></div></div>
       <form class="form" id="iForm" style="margin-top:16px" novalidate>
-        <div class="sect">Who's going LIVE</div>
+        <div class="sect">Who's going LIVE <span style="font-family:var(--sa);font-style:normal;font-size:12px;color:var(--muted)">· needed to start</span></div>
         <div class="grid3">
           <div class="field"><label for="iName">Your first name</label><input type="text" id="iName" placeholder="Luna" autocomplete="given-name"></div>
           <div class="field"><label for="iHandle">TikTok handle</label><input type="text" id="iHandle" placeholder="@lunareadstarot" autocapitalize="off"><span class="hint">Shows in the pod so everyone can follow you.</span></div>
           <div class="field"><label for="iStart">Challenge start date</label><input type="date" id="iStart"></div>
         </div>
         <div class="sect">Where you're starting</div>
-        <div class="grid4">
-          <div class="field"><label for="iFol">TikTok followers</label><input type="number" id="iFol" min="0" inputmode="numeric" placeholder="1240"></div>
+        <div class="grid3">
+          <div class="field"><label for="iFol">TikTok followers</label><input type="number" id="iFol" min="0" inputmode="numeric" placeholder="1,240"></div>
           <div class="field"><label for="iSkool">Skool members</label><input type="number" id="iSkool" min="0" inputmode="numeric" placeholder="18"></div>
-          <div class="field"><label for="iCust">Paying clients</label><input type="number" id="iCust" min="0" inputmode="numeric" placeholder="2"></div>
-          <div class="field"><label for="iRev">Monthly revenue ($)</label><input type="number" id="iRev" min="0" inputmode="decimal" placeholder="300"></div>
+          <div class="field"><label for="iRev">Monthly recurring revenue ($)</label><input type="number" id="iRev" min="0" inputmode="decimal" placeholder="300"><span class="hint">🔒 Only you see this.</span></div>
         </div>
-        <div class="sect">What you're selling</div>
+        <div class="sect">Your offer</div>
         <div class="grid2">
-          <div class="field"><label for="iOffer">The offer you'll talk about on LIVE</label><input type="text" id="iOffer" placeholder="3-card career reading"></div>
-          <div class="field"><label for="iPrice">Price</label><input type="text" id="iPrice" placeholder="$77"></div>
+          <div class="field"><label for="iOffer">What offer are you talking about on TikTok LIVE?</label><input type="text" id="iOffer" placeholder="My Skool community"></div>
+          <div class="field"><label for="iPrice">What's the price?</label><input type="text" id="iPrice" placeholder="$29/month"></div>
         </div>
+        <div class="sect">Your goals for the 30 days</div>
         <div class="grid2">
-          <div class="field"><label for="iGoalC">Clients or sales you're calling in by day 30</label><input type="number" id="iGoalC" min="0" inputmode="numeric" placeholder="5"></div>
-          <div class="field"><label for="iGoalF">Follower goal by day 30</label><input type="number" id="iGoalF" min="0" inputmode="numeric" placeholder="1500"></div>
+          <div class="field"><label for="iGoalC">Clients or members you're calling in</label><input type="number" id="iGoalC" min="0" inputmode="numeric" placeholder="10"></div>
+          <div class="field"><label for="iGoalF">Follower goal by day 30</label><input type="number" id="iGoalF" min="0" inputmode="numeric" placeholder="1,500"></div>
         </div>
         <div class="sect">The inner work</div>
-        <div class="field"><label for="iBelief">The belief you're working on</label><input type="text" id="iBelief" placeholder="People want to hear what I have to say"><span class="hint">Write it as the new belief, in the present tense.</span></div>
         <div class="field"><label for="iWhy">Why this matters to you</label><textarea id="iWhy" placeholder="I'm done hiding behind edited videos. I want people to meet the real me."></textarea></div>
-        <div class="field"><label for="iTopics">Things you could talk about on LIVE</label><textarea id="iTopics" placeholder="One per line&#10;Pull a card for the room&#10;How I read for career questions&#10;What a reading with me looks like"></textarea><span class="hint">One per line.</span></div>
+        <div class="field"><label for="iTopics">Things you could talk about on LIVE</label><textarea id="iTopics" placeholder="One per line"></textarea><span class="hint">One per line.</span></div>
         <div class="formrow"><button class="btn" type="submit" id="iSave">Save my intention</button><span id="iMsg" style="font-size:13.5px;color:var(--muted)"></span></div>
-        <p style="font-size:12.5px;color:var(--muted)">The pod shows your first name, your TikTok handle, your LIVE days and your LIVE totals. Your offer, goals, belief and notes stay private to your link.</p>
+        <p style="font-size:12.5px;color:var(--muted)">Only your first name and TikTok handle are needed to start. Fill in the rest now or later.<br>🔒 The pod sees your first name, handle, LIVE days, LIVEs, hours and followers gained. Your revenue, sales, clients, offer, goals and notes stay private to your link. Sales and clients only count toward the pod's combined total, never next to your name.</p>
       </form>
     </div>
     <div class="card flat" id="topicsCard" hidden>
@@ -632,8 +631,8 @@ function renderToday(){
   const nxt=S.commit.days.filter(d=>d>=TODAY&&!(d===TODAY&&livesOn(d).length)).sort()[0];
   $('#nextLive').textContent= nxt?(nxt===TODAY?'Today':nice(nxt))+' · '+S.commit.minutes+' min'+(S.commit.time?' · '+S.commit.time:''):'Pick your days';
   const p=S.profile;
-  $('#intentQuote').textContent=p.belief||'Set your intention to see it here.';
-  const meta=[]; if(p.offer) meta.push(['🔮 Selling',p.offer+(p.price?' · '+p.price:'')]); if(p.goalClients) meta.push(['💎 Calling in',p.goalClients+' clients']); if(p.goalFollowers) meta.push(['🎯 Follower goal',fmt(p.goalFollowers)]);
+  $('#intentQuote').textContent=p.why||(p.offer?'Talking about '+p.offer+' on LIVE':'Set your intention to see it here.');
+  const meta=[]; if(p.offer) meta.push(['🔮 Selling',p.offer+(p.price?' · '+p.price:'')]); if(p.goalClients) meta.push(['💎 Calling in',p.goalClients+' clients or members']); if(p.goalFollowers) meta.push(['🎯 Follower goal',fmt(p.goalFollowers)]);
   $('#intentMeta').innerHTML=meta.map(m=>`<span class="chip">${esc(m[0])} <b>${esc(m[1])}</b></span>`).join('');
 }
 function renderCal(){
@@ -663,7 +662,7 @@ function renderGrowth(){
   const g=[];
   const fg=N(p.goalFollowers), fs=N(p.startFollowers);
   if(fg>fs) g.push(['🎯','Follower goal',fmt(s.nowF)+' of '+fmt(fg),pc(s.nowF-fs,fg-fs),'']);
-  if(N(p.goalClients)) g.push(['💎','Clients called in',s.cust+' of '+p.goalClients,pc(s.cust,p.goalClients),'']);
+  if(N(p.goalClients)) g.push(['💎','Clients + members called in',(s.cust+s.skool)+' of '+p.goalClients,pc(s.cust+s.skool,p.goalClients),'']);
   g.push(['✅','Commitments kept',s.keptN+' of '+s.totalC+' LIVE days',pc(s.keptN,s.totalC),'mint']);
   g.push(['🌊','Through the 30 days','Day '+dayNum()+' of 30',pc(dayNum(),30),'mint']);
   $('#goals').innerHTML=g.map(x=>`<div class="goal"><div class="top"><b>${x[0]} ${x[1]}</b><span>${esc(x[2])} · ${x[3]}%</span></div><div class="bar ${x[4]}"><i style="width:${x[3]}%"></i></div></div>`).join('');
@@ -688,7 +687,7 @@ function renderGrowth(){
   $('#ring').innerHTML=`<svg class="ring" viewBox="0 0 150 150" role="img" aria-label="${s.pct}% of commitments kept"><circle class="bgc" cx="75" cy="75" r="60"/><circle class="fgc" cx="75" cy="75" r="60" stroke-dasharray="${(C*s.pct/100).toFixed(1)} ${C.toFixed(1)}"/><text x="75" y="80" text-anchor="middle">${s.pct}%</text><text class="sub" x="75" y="100" text-anchor="middle">KEPT</text></svg>`;
   $('#ringTxt').innerHTML=s.due?`You kept <b>${s.keptN} of ${s.due}</b> LIVE commitments so far, for <b>${fmt(s.minutes)} minutes</b> on air. Run right now: <b>${s.streak}</b> in a row 🔥`:'Your consistency score starts with your first committed day.';
   const r=(a,b2,c)=>`<tr><td>${a}</td><td>${b2}</td><td>${c}</td></tr>`;
-  $('#compare').innerHTML=`<table><thead><tr><th></th><th>Day 1</th><th>Now</th></tr></thead><tbody>${r('🫶 TikTok followers',fmt(N(p.startFollowers)),fmt(s.nowF))}${r('🏫 Skool members',fmt(N(p.startSkool)),fmt(s.nowS))}${r('💎 Clients',fmt(N(p.startCustomers)),fmt(s.nowC))}${r('💰 Sales from LIVEs','$0',money(s.rev))}${r('🎙️ LIVEs done','0',fmt(s.lives))}${r('⏱️ Hours on air','0',hrs(s.minutes))}</tbody></table>`;
+  $('#compare').innerHTML=`<table><thead><tr><th></th><th>Day 1</th><th>Now</th></tr></thead><tbody>${r('🫶 TikTok followers',fmt(N(p.startFollowers)),fmt(s.nowF))}${r('🏫 Skool members',fmt(N(p.startSkool)),fmt(s.nowS))}${r('💎 New clients','0',fmt(s.cust))}${r('💰 Sales from LIVEs','$0',money(s.rev))}${r('🎙️ LIVEs done','0',fmt(s.lives))}${r('⏱️ Hours on air','0',hrs(s.minutes))}</tbody></table>`;
 }
 const PAL=['#FF5C7A','#FF9DC6','#E4CCFF','#7FF2DC','#F0CF86','#9FD8F2','#FF8A7A'];
 function emptyChart(msg){return `<div class="empty" style="margin-top:12px"><b>${msg}</b>It fills in as the pod logs LIVEs.</div>`}
@@ -740,8 +739,8 @@ function renderPod(){
 function renderIntent(){
   const p=ME?S.profile:{start:TODAY}, set=(id,v)=>{const el=$(id); if(document.activeElement!==el) el.value=v==null?'':v};
   set('#iName',p.name); set('#iHandle',p.handle?'@'+cleanHandle(p.handle):''); set('#iStart',p.start||TODAY);
-  [['#iFol','startFollowers'],['#iSkool','startSkool'],['#iCust','startCustomers'],['#iRev','startRevenue'],['#iGoalC','goalClients'],['#iGoalF','goalFollowers']].forEach(([id,k])=>set(id,p[k]==null?'':p[k]));
-  set('#iOffer',p.offer); set('#iPrice',p.price); set('#iBelief',p.belief); set('#iWhy',p.why); set('#iTopics',p.topics);
+  [['#iFol','startFollowers'],['#iSkool','startSkool'],['#iRev','startRevenue'],['#iGoalC','goalClients'],['#iGoalF','goalFollowers']].forEach(([id,k])=>set(id,p[k]==null?'':p[k]));
+  set('#iOffer',p.offer); set('#iPrice',p.price); set('#iWhy',p.why); set('#iTopics',p.topics);
   const t=String(S.profile.topics||'').split('\n').map(s=>s.trim()).filter(Boolean);
   $('#topicsCard').hidden=!t.length; $('#topicsList').innerHTML=t.map(x=>`<span class="chip">${esc(x)}</span>`).join('');
 }
@@ -806,7 +805,7 @@ $('#hist').addEventListener('click',async e=>{const ed=e.target.closest('[data-e
 $('#iForm').addEventListener('submit',async e=>{e.preventDefault(); const v=s=>$(s).value.trim();
   if(!v('#iName')){$('#iMsg').textContent='Add your first name.';return;}
   if(!cleanHandle(v('#iHandle'))){$('#iMsg').textContent='Add your TikTok handle so the pod can follow you.';return;}
-  const profile={name:v('#iName').slice(0,40),handle:cleanHandle(v('#iHandle')),start:v('#iStart')||TODAY,startFollowers:N(v('#iFol')),startSkool:N(v('#iSkool')),startCustomers:N(v('#iCust')),startRevenue:N(v('#iRev')),offer:v('#iOffer').slice(0,120),price:v('#iPrice').slice(0,30),goalClients:N(v('#iGoalC')),goalFollowers:N(v('#iGoalF')),belief:v('#iBelief').slice(0,200),why:v('#iWhy').slice(0,600),topics:v('#iTopics').slice(0,1500)};
+  const profile={name:v('#iName').slice(0,40),handle:cleanHandle(v('#iHandle')),start:v('#iStart')||TODAY,startFollowers:N(v('#iFol')),startSkool:N(v('#iSkool')),startCustomers:0,startRevenue:N(v('#iRev')),offer:v('#iOffer').slice(0,120),price:v('#iPrice').slice(0,30),goalClients:N(v('#iGoalC')),goalFollowers:N(v('#iGoalF')),why:v('#iWhy').slice(0,600),topics:v('#iTopics').slice(0,1500)};
   const btn=$('#iSave'); btn.disabled=true; $('#iMsg').textContent='Saving…';
   try{
     if(!ME){
