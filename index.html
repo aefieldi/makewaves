@@ -46,27 +46,54 @@ p{margin:0}
 .hero .plate{position:absolute;inset:0;background:url(assets/plate.jpg) 70% 35%/cover;animation:drift 30s ease-in-out infinite alternate}
 @keyframes drift{from{transform:scale(1.04)}to{transform:scale(1.14) translate(-2%,-1%)}}
 .hero .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,24,32,.9) 0%,rgba(4,24,32,.55) 60%,rgba(4,24,32,.35)),linear-gradient(180deg,transparent 60%,var(--bg))}
-.hero .in{position:relative;padding-block:38px 32px;display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;justify-content:space-between}
-.brand{display:flex;gap:18px;align-items:center}
-.tt{flex:0 0 auto;width:74px;height:74px;border-radius:22px;display:grid;place-items:center;background:#000;box-shadow:0 0 0 1.5px rgba(247,242,234,.18),0 14px 34px rgba(0,0,0,.45),0 0 30px rgba(254,44,85,.18)}
-.tt svg{width:42px;height:42px}
-.hero h1{font-size:clamp(38px,6.6vw,72px);font-weight:500;letter-spacing:-.01em;margin-top:8px;line-height:1}
+.hero .in{position:relative;padding-block:38px 34px;display:flex;gap:32px;align-items:center;justify-content:space-between}
+.hero .copy{min-width:0;flex:1;max-width:760px}
+.hero h1{font-size:clamp(36px,6.2vw,72px);font-weight:500;letter-spacing:-.01em;margin-top:8px;line-height:1}
 .hero h1 .gs{font-size:1.06em}
-.hero .tag{color:var(--soft);font-size:16px;margin-top:12px;max-width:540px}
-.daybadge{display:flex;align-items:center;gap:14px;padding:12px 18px 12px 12px;border-radius:999px;background:var(--pill);border:1.5px solid rgba(127,242,220,.42);box-shadow:0 0 22px rgba(127,242,220,.14)}
-.daybadge .orb{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-family:var(--se);font-size:24px;color:#0A2A33;background:var(--grad);box-shadow:0 0 24px rgba(255,157,198,.35)}
-.daybadge b{display:block;font-size:15px}
-.daybadge small{display:block;color:var(--muted);font-size:12.5px}
-@media (max-width:560px){.tt{width:56px;height:56px;border-radius:17px}.tt svg{width:32px;height:32px}.brand{gap:12px;align-items:flex-start}}
+.hero .tag{color:var(--soft);font-size:16px;margin-top:12px;max-width:620px}
+.daybar{display:flex;align-items:center;gap:16px;margin-top:22px;width:100%;max-width:620px;padding:10px 12px 10px 10px;border-radius:999px;background:var(--pill);border:1.5px solid rgba(127,242,220,.42);box-shadow:0 0 22px rgba(127,242,220,.14)}
+.daybar .orb{flex:0 0 auto;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-family:var(--se);font-size:24px;color:#0A2A33;background:var(--grad);box-shadow:0 0 24px rgba(255,157,198,.35)}
+.daybar .seg{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;flex:1;min-width:0}
+.daybar .seg b{font-size:16px;font-weight:600}
+.daybar .seg span{font-size:14px;color:var(--soft)}
+.daybar .seg i{width:5px;height:5px;border-radius:50%;background:var(--pink);opacity:.7}
+.daybar .btn{flex:0 0 auto}
+.ttwrap{flex:0 0 auto;position:relative;display:grid;place-items:center;width:150px;height:150px}
+.ttwrap::before,.ttwrap::after{content:"";position:absolute;inset:6px;border-radius:44px;filter:blur(26px);opacity:.75;animation:ttglow 4s ease-in-out infinite alternate}
+.ttwrap::before{background:#25F4EE;transform:translate(-10px,-8px)}
+.ttwrap::after{background:#FE2C55;transform:translate(10px,8px);animation-delay:-2s}
+@keyframes ttglow{from{opacity:.45;filter:blur(22px)}to{opacity:.85;filter:blur(32px)}}
+.tt{position:relative;z-index:1;width:124px;height:124px;border-radius:36px;display:grid;place-items:center;background:#000;box-shadow:0 0 0 1.5px rgba(247,242,234,.22),0 18px 40px rgba(0,0,0,.5),0 0 40px rgba(37,244,238,.35),0 0 60px rgba(254,44,85,.3)}
+.tt svg{width:70px;height:70px;filter:drop-shadow(0 0 8px rgba(255,255,255,.35))}
+.tt .live{position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:700;letter-spacing:.14em;padding:3px 10px;border-radius:6px;background:#FE2C55;color:#fff;box-shadow:0 0 16px rgba(254,44,85,.7)}
+@media (max-width:760px){.hero .in{flex-direction:column-reverse;align-items:flex-start;gap:18px}.ttwrap{width:84px;height:84px}.ttwrap::before,.ttwrap::after{border-radius:26px;inset:4px}.tt{width:70px;height:70px;border-radius:21px}.tt svg{width:40px;height:40px}.tt .live{font-size:9px;bottom:-8px;padding:2px 7px}}
+@media (max-width:520px){.daybar{border-radius:22px;flex-wrap:wrap}.daybar .btn{width:100%}}
 
-/* tabs */
-nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(6,32,42,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line2)}
-nav.tabs .row{display:flex;gap:8px;align-items:center;padding-block:10px}
-nav.tabs .links{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
-nav.tabs .links::-webkit-scrollbar{display:none}
-nav.tabs a{flex:0 0 auto;text-decoration:none;font-weight:500;font-size:13.5px;color:var(--soft);padding:7px 14px;border-radius:999px;border:1px solid var(--line2);white-space:nowrap}
-nav.tabs a.on{background:var(--grad);color:#0A2A33;border-color:transparent;font-weight:600}
-nav.tabs a:hover:not(.on){border-color:var(--mint);color:var(--txt)}
+/* shell: sidebar + content */
+.shell{display:grid;grid-template-columns:250px minmax(0,1fr);gap:28px;align-items:start;padding-block:28px 60px}
+aside.side{position:sticky;top:calc(env(safe-area-inset-top,0px) + 18px);display:grid;gap:18px}
+.side .grp{display:grid;gap:6px}
+.side .gl{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);padding:0 6px 4px}
+.side a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:16px;text-decoration:none;color:var(--soft);font-weight:500;font-size:14.5px;border:1px solid transparent;transition:background .2s,border-color .2s}
+.side a:hover{background:rgba(127,242,220,.06);border-color:var(--line2);color:var(--txt)}
+.side a .ic{flex:0 0 auto;width:36px;height:36px;border-radius:12px;display:grid;place-items:center;font-size:18px;background:rgba(4,24,32,.6);border:1px solid var(--line2)}
+.side a .tx{flex:1;min-width:0;line-height:1.25}
+.side a .tx small{display:block;font-size:11.5px;color:var(--muted);font-weight:400}
+.side a .ck{flex:0 0 auto;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;border:1.5px solid var(--line2);color:var(--muted)}
+.side a.done .ck{background:var(--mint);border-color:transparent;color:#0A2A33}
+.side a.on{background:linear-gradient(120deg,rgba(228,204,255,.16),rgba(255,157,198,.14),rgba(127,242,220,.12));border-color:rgba(255,157,198,.5);color:var(--txt)}
+.side a.on .ic{background:var(--grad);border-color:transparent}
+.side .btn{width:100%}
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr;gap:18px;padding-top:0}
+  aside.side{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:10px max(16px,env(safe-area-inset-left,0px));background:rgba(6,32,42,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line2);display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+  aside.side::-webkit-scrollbar{display:none}
+  .side .grp{display:contents}.side .gl{display:none}
+  .side a{flex:0 0 auto;padding:6px 12px 6px 6px;border-color:var(--line2);border-radius:999px;font-size:13px;gap:8px}
+  .side a .ic{width:28px;height:28px;border-radius:50%;font-size:14px}
+  .side a .tx small,.side a .ck{display:none}
+  .side .btn{width:auto;flex:0 0 auto}
+}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font-weight:600;font-size:14.5px;padding:11px 20px;border-radius:999px;color:#0A2A33;background:var(--grad);box-shadow:0 10px 26px -10px rgba(255,157,198,.65);text-decoration:none;transition:transform .15s;white-space:nowrap}
 .btn:hover{transform:translateY(-1px)}
 .btn.fire{background:var(--fire);box-shadow:0 10px 26px -8px rgba(255,92,122,.6)}
@@ -75,7 +102,7 @@ nav.tabs a:hover:not(.on){border-color:var(--mint);color:var(--txt)}
 .btn.icon{padding:6px 10px;font-size:13px}
 .btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
 
-main{padding-block:28px 60px}
+main{min-width:0}
 .view{display:grid;gap:22px}
 .card{position:relative;border-radius:22px;padding:24px;background:linear-gradient(160deg,rgba(14,59,74,.85),rgba(6,32,42,.92));border:1px solid var(--line2);box-shadow:0 18px 44px rgba(2,14,20,.35);min-width:0}
 .card.flat{background:rgba(4,24,32,.5);box-shadow:none}
@@ -247,6 +274,21 @@ td .note{color:var(--soft);font-size:13px}
 .puff .acts{display:flex;gap:6px;align-items:center}
 .puff.done .av{opacity:.55}
 @media (max-width:560px){.puff{grid-template-columns:auto 1fr}.puff .acts{grid-column:1/-1;justify-content:flex-end}}
+.charts2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:760px){.charts2{grid-template-columns:1fr}}
+.hbar{display:grid;grid-template-columns:120px minmax(0,1fr) 44px;gap:10px;align-items:center;font-size:13.5px}
+.hbar .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--soft)}
+.hbar .tr{height:16px;border-radius:999px;background:rgba(127,242,220,.08);overflow:hidden}
+.hbar .tr i{display:block;height:100%;border-radius:999px;background:var(--fire);box-shadow:0 0 12px rgba(255,92,122,.45)}
+.hbar b{text-align:right;font-variant-numeric:tabular-nums}
+.hbars{display:grid;gap:9px;margin-top:14px}
+.donutwrap{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.donut{width:170px;height:170px;flex:0 0 auto}
+.donut text{fill:var(--txt);font-family:var(--se);font-size:26px}
+.donut .sub{fill:var(--muted);font-family:var(--sa);font-size:9.5px;letter-spacing:.14em}
+.keys{display:grid;gap:6px;font-size:13px;color:var(--soft);flex:1;min-width:160px}
+.keys span{display:flex;align-items:center;gap:8px}
+.keys i{width:11px;height:11px;border-radius:50%;flex:0 0 auto}
 .copyline{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:14px 16px;border-radius:14px;background:rgba(4,24,32,.6);border:1px dashed var(--line2);font-size:14px}
 .copyline code{flex:1;min-width:0;font-family:var(--sa);color:var(--txt);word-break:break-all}
 
@@ -264,48 +306,46 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
 <header class="hero">
   <div class="plate" aria-hidden="true"></div><div class="shade" aria-hidden="true"></div>
   <div class="wrap in">
-    <div class="brand">
-      <div class="tt" aria-label="TikTok LIVE" role="img">
-        <svg viewBox="-1.5 -1.5 27 27" aria-hidden="true"><path fill="#25F4EE" transform="translate(-.9 -.7)" d="M12.53.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/><path fill="#FE2C55" transform="translate(.9 .7)" d="M12.53.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/><path fill="#fff" d="M12.53.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-      </div>
-      <div>
-        <div class="eyebrow">Spiritual Business Skool · TikTok LIVE challenge</div>
-        <h1>30 Days to <span class="gs">Make Waves</span></h1>
-        <p class="tag">Choose your LIVE days. Show up. Watch the lights turn on. There's no one right way, only your way and consistency.</p>
+    <div class="copy">
+      <div class="eyebrow">Spiritual Business Skool · TikTok LIVE challenge</div>
+      <h1>30 Days to <span class="gs">Make Waves</span></h1>
+      <p class="tag">Choose your LIVE days. Show up. Watch the lights turn on. There's no one right way, only your way and consistency.</p>
+      <div class="daybar">
+        <div class="orb num" id="dayOrb">0</div>
+        <div class="seg"><b id="dayTitle">Day 0 of 30</b><i></i><span id="dayName">Your name</span><i></i><span id="dayLeft">30 days left</span></div>
+        <button class="btn fire sm" type="button" data-log>+ Log a LIVE</button>
       </div>
     </div>
-    <div class="daybadge"><div class="orb num" id="dayOrb">1</div><div><b id="dayTitle">Day 1 of 30</b><small id="daySub">Your challenge starts today</small></div></div>
+    <div class="ttwrap"><div class="tt" role="img" aria-label="TikTok LIVE"><svg viewBox="-1.5 -1.5 27 27" aria-hidden="true"><path fill="#25F4EE" transform="translate(-.9 -.7)" d="M12.53.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/><path fill="#FE2C55" transform="translate(.9 .7)" d="M12.53.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/><path fill="#fff" d="M12.53.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg><span class="live">LIVE</span></div></div>
   </div>
 </header>
 
-<nav class="tabs" aria-label="Challenge sections">
-  <div class="wrap row">
-    <div class="links" id="tabs">
-      <a href="#today">🌊 Today</a>
-      <a href="#calendar">📅 My calendar</a>
-      <a href="#log">🎙️ LIVE log</a>
-      <a href="#growth">📈 Growth</a>
-      <a href="#resources">✨ TikTok LIVE resources</a>
-      <a href="#pod">🐚 The pod</a>
-      <a href="#intention">🌙 My intention</a>
-    </div>
-    <button class="btn fire sm" id="quickLog" type="button">+ Log a LIVE</button>
+<div class="wrap shell">
+<aside class="side" aria-label="Challenge steps">
+  <div class="grp">
+    <div class="gl">Your 30 days</div>
+    <a href="#intention" data-step="intention"><span class="ic">🌙</span><span class="tx">Set your intention<small>Step 1</small></span><span class="ck">1</span></a>
+    <a href="#calendar" data-step="calendar"><span class="ic">📅</span><span class="tx">Choose your LIVE days<small>Step 2</small></span><span class="ck">2</span></a>
+    <a href="#log" data-step="log"><span class="ic">🎙️</span><span class="tx">Log your LIVEs<small>Step 3</small></span><span class="ck">3</span></a>
+    <a href="#home"><span class="ic">🌊</span><span class="tx">My dashboard<small>Your lights + growth</small></span></a>
   </div>
-</nav>
+  <div class="grp">
+    <div class="gl">Together</div>
+    <a href="#resources"><span class="ic">✨</span><span class="tx">TikTok LIVE resources</span></a>
+    <a href="#pod"><span class="ic">🧜‍♀️</span><span class="tx">The pod<small>Everyone's waves</small></span></a>
+  </div>
+  <button class="btn fire" type="button" data-log>+ Log a LIVE</button>
+</aside>
 
-<main class="wrap">
-  <div id="exampleBanner" class="banner" hidden style="margin-bottom:22px">
-    <p><b>You're looking at an example</b> (Luna, a made-up tarot reader). Set your intention to start your own 30 days.</p>
-    <button class="btn sm" type="button" data-go="intention">Start my challenge</button>
-  </div>
+<main>
   <div id="errBanner" class="banner err" hidden style="margin-bottom:22px"><p id="errText"></p><button class="btn ghost sm" type="button" id="errRetry">Try again</button></div>
 
-  <!-- TODAY -->
-  <section class="view" data-view="today">
+  <!-- HOME: dashboard + growth -->
+  <section class="view" data-view="home" hidden>
     <div class="card">
       <div class="head">
-        <div><div class="eyebrow">Your tide line · one light per day</div><h2 id="todayHead">Day 1. Let's go.</h2><p id="todaySub"></p></div>
-        <button class="btn fire" type="button" data-go="log">+ Log today's LIVE</button>
+        <div><div class="eyebrow">Your tide line · one light per day</div><h2 id="todayHead">Your 30 days</h2><p id="todaySub"></p></div>
+        <button class="btn fire" type="button" data-log>+ Log today's LIVE</button>
       </div>
       <div class="tide" id="tide"></div>
       <div class="legend"><span><i class="l-k"></i>Kept</span><span><i class="l-p"></i>Committed</span><span><i class="l-b"></i>Bonus LIVE</span><span><i class="l-m"></i>Missed</span></div>
@@ -329,9 +369,24 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
         <div class="meta" id="intentMeta"></div>
       </div>
     </div>
+    <div class="card">
+      <div class="head"><div><div class="eyebrow">My 30 days in numbers</div><h2>Look what you're <span class="gs">building</span></h2></div></div>
+      <div class="big" style="margin-top:16px" id="bigTiles"></div>
+    </div>
+    <div class="grid2" id="goals"></div>
     <div class="card flat">
-      <div class="head"><div class="eyebrow">Where you started → where you are</div><button class="btn ghost sm" type="button" data-go="growth">See my growth</button></div>
-      <div class="grid4" style="margin-top:14px" id="ftTiles"></div>
+      <div class="eyebrow">🐚 Wave milestones</div>
+      <div class="ladder" id="ladder"></div>
+    </div>
+    <div class="grid2">
+      <div class="card"><div class="eyebrow">🫶 Followers gained over the 30 days</div><div id="chartFollow"></div></div>
+      <div class="card"><div class="eyebrow">⏱️ Minutes LIVE each day</div><div id="chartMin"></div>
+        <div class="legend"><span><i class="l-k"></i>Kept a commitment</span><span><i class="l-b"></i>Bonus LIVE</span><span><i class="l-m"></i>Missed</span></div></div>
+    </div>
+    <div class="grid2">
+      <div class="card flat"><div class="eyebrow">✅ Consistency</div>
+        <div class="ringwrap" style="margin-top:10px"><div id="ring"></div><p id="ringTxt" style="color:var(--soft);flex:1;min-width:180px"></p></div></div>
+      <div class="card flat compare"><div class="eyebrow">Day 1 vs now</div><div class="tbl" id="compare"></div></div>
     </div>
   </section>
 
@@ -383,29 +438,6 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
     </div>
   </section>
 
-  <!-- GROWTH -->
-  <section class="view" data-view="growth" hidden>
-    <div class="card">
-      <div class="head"><div><div class="eyebrow">My 30 days in numbers</div><h2>Look what you're <span class="gs">building</span></h2></div></div>
-      <div class="big" style="margin-top:16px" id="bigTiles"></div>
-    </div>
-    <div class="grid2" id="goals"></div>
-    <div class="card flat">
-      <div class="eyebrow">🐚 Wave milestones</div>
-      <div class="ladder" id="ladder"></div>
-    </div>
-    <div class="grid2">
-      <div class="card"><div class="eyebrow">🫶 Followers gained over the 30 days</div><div id="chartFollow"></div></div>
-      <div class="card"><div class="eyebrow">⏱️ Minutes LIVE each day</div><div id="chartMin"></div>
-        <div class="legend"><span><i class="l-k"></i>Kept a commitment</span><span><i class="l-b"></i>Bonus LIVE</span><span><i class="l-m"></i>Missed</span></div></div>
-    </div>
-    <div class="grid2">
-      <div class="card flat"><div class="eyebrow">✅ Consistency</div>
-        <div class="ringwrap" style="margin-top:10px"><div id="ring"></div><p id="ringTxt" style="color:var(--soft);flex:1;min-width:180px"></p></div></div>
-      <div class="card flat compare"><div class="eyebrow">Day 1 vs now</div><div class="tbl" id="compare"></div></div>
-    </div>
-  </section>
-
   <!-- RESOURCES -->
   <section class="view" data-view="resources" hidden>
     <div class="card">
@@ -428,11 +460,20 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
   <!-- POD -->
   <section class="view" data-view="pod" hidden>
     <div class="card">
-      <div class="head"><div><div class="eyebrow">🐚 Everyone in the challenge</div><h2>The <span class="gs">pod</span></h2>
+      <div class="head"><div><div class="eyebrow">🧜‍♀️ Everyone in the challenge</div><h2>The <span class="gs">pod</span></h2>
         <p>What all of us have built together, tracked from every LIVE anyone logs. Follow each other and show up in each other's LIVEs.</p></div>
         <span class="saving" id="podUpdated"></span></div>
       <div class="podtotals" id="podTotals"></div>
     </div>
+    <div class="charts2">
+      <div class="card"><div class="eyebrow">⏱️ Hours LIVE together</div><div id="podHours"></div></div>
+      <div class="card"><div class="eyebrow">🧜‍♀️ Puffins LIVE each day</div><div id="podDaily"></div></div>
+    </div>
+    <div class="charts2">
+      <div class="card flat"><div class="eyebrow">🎙️ Who's showing up · LIVEs logged</div><div class="hbars" id="podBars"></div></div>
+      <div class="card flat"><div class="eyebrow">🫶 Followers gained, by Puffin</div><div id="podDonut"></div></div>
+    </div>
+    <div class="card flat"><div class="eyebrow">✅ Pod consistency</div><div class="ringwrap" style="margin-top:10px"><div id="podRing"></div><p id="podRingTxt" style="color:var(--soft);flex:1;min-width:180px"></p></div></div>
     <div class="card flat">
       <div class="head"><div class="eyebrow">Follow the pod on TikTok</div><span style="color:var(--muted);font-size:13px" id="podCount"></span></div>
       <div class="podlist" id="podList"></div>
@@ -492,8 +533,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
     </div>
   </section>
 </main>
+</div>
 
-<footer><div class="wrap"><span>30 Days to Make Waves · <a href="https://www.skool.com/amanda/about" target="_blank" rel="noopener">Spiritual Business Skool</a></span><span>Made by Amanda for her Puffins 🐧</span></div></footer>
+<footer><div class="wrap"><span>30 Days to Make Waves · <a href="https://www.skool.com/amanda/about" target="_blank" rel="noopener">Spiritual Business Skool</a></span><span>Made by Amanda for her Puffins 🧜‍♀️</span></div></footer>
 <canvas id="confetti" aria-hidden="true"></canvas>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -529,7 +571,7 @@ const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},se
 let ME=null;
 (function readMe(){
   const m=location.hash.match(/me=([0-9a-f-]{36})\.([0-9a-f]{40,})/i);
-  if(m){ME={id:m[1],secret:m[2]};store.set(ME_KEY,JSON.stringify(ME));history.replaceState(null,'',location.pathname+location.search+'#today');}
+  if(m){ME={id:m[1],secret:m[2]};store.set(ME_KEY,JSON.stringify(ME));history.replaceState(null,'',location.pathname+location.search+'#home');}
   else{try{ME=JSON.parse(store.get(ME_KEY)||'null')}catch(e){ME=null}}
 })();
 const myLink=()=>ME?location.origin+location.pathname+'#me='+ME.id+'.'+ME.secret:'';
@@ -542,19 +584,10 @@ async function api(action,payload){
 }
 
 /* ---------- state ---------- */
-function blank(){return{example:false,profile:{start:TODAY},commit:{days:[],minutes:30,time:''},lives:[]}}
-function example(){
-  const start=addDays(TODAY,-11), days=[], lives=[];
-  for(let i=0;i<30;i++){const d=addDays(start,i), w=parse(d).getDay(); if(w===2||w===4||w===6||w===0) days.push(d);}
-  const past=days.filter(d=>d<TODAY), seeds=[[38,12,1,0,0,'Shaky start. Pulled one card for the room and 9 people stayed the whole time.'],[45,21,0,1,77,'Someone booked a career reading straight from the LIVE.'],[30,4,0,0,0,''],[52,33,2,0,0,'Repeated my intro every 10 minutes. Two Skool joins.'],[60,28,1,1,77,'Second reading booked.']];
-  past.forEach((d,i)=>{ if(i===2) return; const s=seeds[i%seeds.length]; lives.push({id:'ex'+i,date:d,minutes:s[0],followers:s[1],skool:s[2],customers:s[3],revenue:s[4],note:s[5]}); });
-  const bonus=addDays(start,4); if(bonus<TODAY&&!days.includes(bonus)) lives.push({id:'exb',date:bonus,minutes:20,followers:9,skool:0,customers:0,revenue:0,note:'Bonus LIVE from the kitchen.'});
-  return{example:true,profile:{name:'Luna',handle:'lunareadstarot',start,startFollowers:1240,startSkool:18,startCustomers:2,startRevenue:300,offer:'3-card career reading',price:'$77',goalClients:5,goalFollowers:1500,belief:'People want to hear what I have to say',why:"I'm done hiding behind edited videos. I want people to meet the real me.",topics:'Pull a card for the room\nHow I read for career questions\nWhat a reading with me looks like'},commit:{days,minutes:45,time:'7pm'},lives};
-}
-let S;
-if(ME){ try{S=JSON.parse(store.get(CACHE_KEY)||'null')}catch(e){S=null} if(!S||!S.profile) S=blank(); S.example=false; }
-else S=example();
-const cache=()=>{ if(ME&&!S.example) store.set(CACHE_KEY,JSON.stringify(S)); };
+function blank(){return{profile:{},commit:{days:[],minutes:30,time:''},lives:[]}}
+let S=blank();
+if(ME){ try{const c=JSON.parse(store.get(CACHE_KEY)||'null'); if(c&&c.profile) S=c;}catch(e){} }
+const cache=()=>{ if(ME) store.set(CACHE_KEY,JSON.stringify(S)); };
 let FOLLOWED={}; try{FOLLOWED=JSON.parse(store.get(FOL_KEY)||'{}')||{}}catch(e){}
 let POD=null;
 
@@ -563,7 +596,8 @@ const challengeDays=()=>{const s=S.profile.start||TODAY;return Array.from({lengt
 const livesOn=d=>S.lives.filter(l=>l.date===d);
 function status(d){const c=S.commit.days.includes(d), l=livesOn(d).length>0;
   if(c&&l) return 'kept'; if(l) return 'bonus'; if(c&&d<TODAY) return 'missed'; if(c) return 'planned'; return 'rest';}
-const dayNum=()=>Math.min(30,Math.max(0,diff(S.profile.start||TODAY,TODAY)+1));
+const started=()=>!!(ME&&S.profile.start);
+const dayNum=()=>started()?Math.min(30,Math.max(0,diff(S.profile.start,TODAY)+1)):0;
 function stats(){
   const cd=challengeDays(), dueC=S.commit.days.filter(d=>cd.includes(d)&&d<=TODAY&&!(d===TODAY&&!livesOn(d).length));
   const keptN=dueC.filter(d=>livesOn(d).length).length;
@@ -575,19 +609,21 @@ function stats(){
 
 /* ---------- render ---------- */
 function renderHeader(){
-  const n=dayNum(), st=S.profile.start||TODAY;
-  $('#dayOrb').textContent=String(n);
-  if(diff(st,TODAY)<0){$('#dayTitle').textContent='Starts '+nice(st);$('#daySub').textContent=(-diff(st,TODAY))+' days to go';}
-  else if(diff(st,TODAY)>29){$('#dayTitle').textContent='30 days complete 🌊';$('#daySub').textContent='Look at what you built';}
-  else{$('#dayTitle').textContent='Day '+n+' of 30';$('#daySub').textContent=(S.profile.name?S.profile.name+', ':'')+(30-n)+' days left';}
-  $('#exampleBanner').hidden=!S.example;
+  const n=dayNum(), st=S.profile.start, nm=S.profile.name||'Your name';
+  $('#dayOrb').textContent=String(n); $('#dayName').textContent=nm;
+  if(!started()){$('#dayTitle').textContent='Day 0 of 30';$('#dayLeft').textContent='30 days left';}
+  else if(diff(st,TODAY)<0){$('#dayTitle').textContent='Day 0 of 30';$('#dayLeft').textContent='Starts '+short(st);}
+  else if(diff(st,TODAY)>29){$('#dayTitle').textContent='Day 30 of 30';$('#dayLeft').textContent='Complete 🌊';}
+  else{$('#dayTitle').textContent='Day '+n+' of 30';$('#dayLeft').textContent=(30-n)+(30-n===1?' day left':' days left');}
   $('#linkCard').hidden=!ME; $('#leaveCard').hidden=!ME; if(ME) $('#myLink').textContent=myLink();
   $('#iSave').textContent=ME?'Save my intention':'Start my 30 days';
+  const done={intention:!!ME,calendar:S.commit.days.length>0,log:S.lives.length>0};
+  $$('.side a[data-step]').forEach(a=>{const k=a.dataset.step, d=done[k]; a.classList.toggle('done',d); a.querySelector('.ck').textContent=d?'✓':({intention:1,calendar:2,log:3})[k];});
 }
 function renderToday(){
   const s=stats(), n=dayNum(), t=status(TODAY);
-  $('#todayHead').textContent= t==='kept'?'Today\'s light is on 🔥':t==='planned'?'Today is a LIVE day.':t==='bonus'?'Bonus LIVE today. Look at you.':(n>=1&&n<=30?'Day '+n+'. Rest or go bonus.':'Your 30 days');
-  $('#todaySub').textContent= t==='planned'?('You committed to '+S.commit.minutes+' minutes'+(S.commit.time?' at '+S.commit.time:'')+'. Log it when you come off.'):(s.totalC?s.totalC+' LIVE days on your calendar.':'Pick your LIVE days on the calendar to light up your tide line.');
+  $('#todayHead').textContent= !ME?'Your 30 days start here':t==='kept'?'Today\'s light is on 🔥':t==='planned'?'Today is a LIVE day.':t==='bonus'?'Bonus LIVE today. Look at you.':(n>=1&&n<=30?'Day '+n+'. Rest or go bonus.':'Your 30 days');
+  $('#todaySub').textContent= t==='planned'?('You committed to '+S.commit.minutes+' minutes'+(S.commit.time?' at '+S.commit.time:'')+'. Log it when you come off.'):(!ME?'Set your intention, then choose your LIVE days. Each one becomes a light here.':s.totalC?s.totalC+' LIVE days on your calendar.':'Pick your LIVE days on the calendar to light up your tide line.');
   $('#tide').innerHTML=challengeDays().map((d,i)=>`<i class="${status(d)}${d===TODAY?' today':''}" title="Day ${i+1} · ${esc(nice(d))}"></i>`).join('');
   $('#kStreak').textContent=s.streak; $('#kKept').textContent=s.keptN+'/'+s.due; $('#kHours').textContent=hrs(s.minutes);
   const nxt=S.commit.days.filter(d=>d>=TODAY&&!(d===TODAY&&livesOn(d).length)).sort()[0];
@@ -596,8 +632,6 @@ function renderToday(){
   $('#intentQuote').textContent=p.belief||'Set your intention to see it here.';
   const meta=[]; if(p.offer) meta.push(['🔮 Selling',p.offer+(p.price?' · '+p.price:'')]); if(p.goalClients) meta.push(['💎 Calling in',p.goalClients+' clients']); if(p.goalFollowers) meta.push(['🎯 Follower goal',fmt(p.goalFollowers)]);
   $('#intentMeta').innerHTML=meta.map(m=>`<span class="chip">${esc(m[0])} <b>${esc(m[1])}</b></span>`).join('');
-  const tile=(e,lbl,from,now)=>{const d=now-from;return `<div class="ft"><div class="lbl"><span class="em">${e}</span>${lbl}</div><div class="now num">${fmt(now)}</div><div class="from">from ${fmt(from)} on day 1</div><span class="delta${d?'':' zero'}">${d>0?'+':''}${fmt(d)}</span></div>`};
-  $('#ftTiles').innerHTML=tile('🫶','Followers',N(p.startFollowers),s.nowF)+tile('🏫','Skool',N(p.startSkool),s.nowS)+tile('💎','Clients',N(p.startCustomers),s.nowC)+`<div class="ft"><div class="lbl"><span class="em">💰</span>Sales</div><div class="now num">${money(s.rev)}</div><div class="from">from ${s.lives} LIVE${s.lives===1?'':'s'}</div><span class="delta${s.rev?'':' zero'}">${s.cust} new client${s.cust===1?'':'s'}</span></div>`;
 }
 function renderCal(){
   const cd=challengeDays(), off=parse(cd[0]).getDay();
@@ -636,7 +670,7 @@ function renderGrowth(){
   const W=640,H=230,L=44,R=16,T=18,B=30, max=Math.max(10,Math.ceil(Math.max(...pts,0)*1.2/10)*10);
   const x=i=>L+(W-L-R)*i/29, y=v=>T+(H-T-B)*(1-v/max);
   const axis=(ys,f)=>{let o='';ys.forEach(v=>{o+=`<line class="grid" x1="${L}" x2="${W-R}" y1="${f(v)}" y2="${f(v)}"/><text class="axis" x="${L-8}" y="${f(v)+4}" text-anchor="end">${fmt(v)}</text>`});[0,9,19,29].forEach(i=>{o+=`<text class="axis" x="${x(i)}" y="${H-8}" text-anchor="middle">Day ${i+1}</text>`});return o};
-  if(dayNum()<1) $('#chartFollow').innerHTML='<div class="empty" style="margin-top:12px"><b>Your line starts on day 1</b>Log your first LIVE and it begins to climb.</div>';
+  if(!started()) $('#chartFollow').innerHTML='<div class="empty" style="margin-top:12px"><b>Your line starts on day 1</b>Log your first LIVE and it begins to climb.</div>';
   else{const line=pts.map((v,i)=>(i?'L':'M')+x(i).toFixed(1)+' '+y(v).toFixed(1)).join(' '), li=pts.length-1;
     $('#chartFollow').innerHTML=`<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Followers gained so far: ${pts[li]}">${axis([0,max/2,max],y)}<path class="area" d="${line} L${x(li).toFixed(1)} ${y(0)} L${x(0)} ${y(0)} Z"/><path class="lineP" d="${line}"/><circle class="dot" cx="${x(li)}" cy="${y(pts[li])}" r="5"/><text class="endlbl" x="${Math.min(Math.max(x(li),L+20),W-R-30)}" y="${Math.max(y(pts[li])-12,14)}" text-anchor="middle">+${fmt(pts[li])}</text></svg>`;}
   const mins=cd.map(d=>livesOn(d).reduce((a,l)=>a+N(l.minutes),0)), mmax=Math.max(30,Math.ceil(Math.max(...mins,S.commit.minutes)*1.15/15)*15);
@@ -653,11 +687,45 @@ function renderGrowth(){
   const r=(a,b2,c)=>`<tr><td>${a}</td><td>${b2}</td><td>${c}</td></tr>`;
   $('#compare').innerHTML=`<table><thead><tr><th></th><th>Day 1</th><th>Now</th></tr></thead><tbody>${r('🫶 TikTok followers',fmt(N(p.startFollowers)),fmt(s.nowF))}${r('🏫 Skool members',fmt(N(p.startSkool)),fmt(s.nowS))}${r('💎 Clients',fmt(N(p.startCustomers)),fmt(s.nowC))}${r('💰 Sales from LIVEs','$0',money(s.rev))}${r('🎙️ LIVEs done','0',fmt(s.lives))}${r('⏱️ Hours on air','0',hrs(s.minutes))}</tbody></table>`;
 }
+const PAL=['#FF5C7A','#FF9DC6','#E4CCFF','#7FF2DC','#F0CF86','#9FD8F2','#FF8A7A'];
+function emptyChart(msg){return `<div class="empty" style="margin-top:12px"><b>${msg}</b>It fills in as the pod logs LIVEs.</div>`}
 function renderPod(){
-  if(!POD){$('#podTotals').innerHTML='<div class="empty" style="grid-column:1/-1"><b>Loading the pod…</b></div>';$('#podList').innerHTML='';return;}
-  const t=POD.totals||{};
-  const tiles=[['🐧',fmt(N(t.members)),'Puffins in the challenge','rgba(228,204,255,.22)'],['🫶','+'+fmt(N(t.followers)),'Followers gained','rgba(255,157,198,.22)'],['💰',money(N(t.revenue)),'Sales from LIVEs','rgba(240,207,134,.2)'],['⏱️',hrs(N(t.minutes)),'Hours LIVE together','rgba(255,92,122,.22)'],['🎙️',fmt(N(t.lives)),'LIVEs logged','rgba(127,242,220,.2)'],['💎',fmt(N(t.customers)),'New clients','rgba(228,204,255,.22)']];
+  if(!POD){$('#podTotals').innerHTML='<div class="empty" style="grid-column:1/-1"><b>Loading the pod…</b></div>';['#podList','#podHours','#podDaily','#podBars','#podDonut','#podRing'].forEach(id=>$(id).innerHTML='');$('#podRingTxt').textContent='';return;}
+  const t=POD.totals||{}, daily=POD.daily||[], mem=POD.members||[];
+  const tiles=[['🧜‍♀️',fmt(N(t.members)),'Puffins in the challenge','rgba(228,204,255,.22)'],['🫶','+'+fmt(N(t.followers)),'Followers gained','rgba(255,157,198,.22)'],['💰',money(N(t.revenue)),'Sales from LIVEs','rgba(240,207,134,.2)'],['⏱️',hrs(N(t.minutes)),'Hours LIVE together','rgba(255,92,122,.22)'],['🎙️',fmt(N(t.lives)),'LIVEs logged','rgba(127,242,220,.2)'],['💎',fmt(N(t.customers)),'New clients','rgba(228,204,255,.22)']];
   $('#podTotals').innerHTML=tiles.map(b=>`<div class="bigtile" style="--glow:${b[3]}"><div class="e">${b[0]}</div><b class="num">${esc(b[1])}</b><span>${b[2]}</span></div>`).join('');
+  const W=640,H=230,L=44,R=16,T=18,B=30;
+  // hours together: cumulative area
+  if(daily.length){
+    const first=daily[0].date, span=Math.max(1,diff(first,TODAY)), byD=Object.fromEntries(daily.map(d=>[d.date,d]));
+    let cum=0; const pts=[]; for(let i=0;i<=span;i++){const d=addDays(first,i); cum+=N(byD[d]&&byD[d].minutes); pts.push(cum/60);}
+    const max=Math.max(1,Math.ceil(Math.max(...pts)*1.2)), x=i=>L+(W-L-R)*i/Math.max(1,pts.length-1), y=v=>T+(H-T-B)*(1-v/max), li=pts.length-1;
+    let g=''; [0,max/2,max].forEach(v=>{g+=`<line class="grid" x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}"/><text class="axis" x="${L-8}" y="${y(v)+4}" text-anchor="end">${v%1?v.toFixed(1):v}h</text>`});
+    g+=`<text class="axis" x="${L}" y="${H-8}">${esc(short(first))}</text><text class="axis" x="${W-R}" y="${H-8}" text-anchor="end">Today</text>`;
+    const line=pts.map((v,i)=>(i?'L':'M')+x(i).toFixed(1)+' '+y(v).toFixed(1)).join(' ');
+    $('#podHours').innerHTML=`<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Hours LIVE together: ${hrs(N(t.minutes))}">${g}<path class="area" d="${line} L${x(li).toFixed(1)} ${y(0)} L${x(0)} ${y(0)} Z"/><path class="lineP" d="${line}"/><circle class="dot" cx="${x(li)}" cy="${y(pts[li])}" r="5"/><text class="endlbl" x="${Math.max(x(li)-30,L+30)}" y="${Math.max(y(pts[li])-12,14)}" text-anchor="middle">${hrs(N(t.minutes))}h</text></svg>`;
+    // puffins live each day: last 30 days bars
+    const days=Array.from({length:30},(_,i)=>addDays(TODAY,i-29)), vals=days.map(d=>N(byD[d]&&byD[d].puffins)), m2=Math.max(2,...vals), bw=(W-L-R)/30*.66, x2=i=>L+(W-L-R)*(i+.5)/30, y2=v=>T+(H-T-B)*(1-v/m2);
+    let b=''; [0,Math.ceil(m2/2),m2].forEach(v=>{b+=`<line class="grid" x1="${L}" x2="${W-R}" y1="${y2(v)}" y2="${y2(v)}"/><text class="axis" x="${L-8}" y="${y2(v)+4}" text-anchor="end">${v}</text>`});
+    b+=`<text class="axis" x="${L}" y="${H-8}">${esc(short(days[0]))}</text><text class="axis" x="${W-R}" y="${H-8}" text-anchor="end">Today</text>`;
+    days.forEach((d,i)=>{ if(vals[i]) b+=`<rect class="barB" x="${(x2(i)-bw/2).toFixed(1)}" y="${y2(vals[i]).toFixed(1)}" width="${bw.toFixed(1)}" height="${(y2(0)-y2(vals[i])).toFixed(1)}" rx="3"><title>${esc(short(d))}: ${vals[i]} Puffin${vals[i]===1?'':'s'} LIVE</title></rect>`; });
+    $('#podDaily').innerHTML=`<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Puffins LIVE each day, last 30 days">${b}</svg>`;
+  } else { $('#podHours').innerHTML=emptyChart('No LIVE hours yet'); $('#podDaily').innerHTML=emptyChart('No LIVEs yet'); }
+  // who's showing up
+  const top=mem.filter(m=>N(m.lives)>0).sort((a,b)=>N(b.lives)-N(a.lives)||N(b.minutes)-N(a.minutes)).slice(0,10), mx=Math.max(1,...top.map(m=>N(m.lives)));
+  $('#podBars').innerHTML=top.length?top.map(m=>`<div class="hbar"><span class="nm">${esc(m.name||'Puffin')}</span><span class="tr"><i style="width:${Math.max(4,100*N(m.lives)/mx)}%"></i></span><b>${fmt(N(m.lives))}</b></div>`).join(''):emptyChart('Nobody has logged a LIVE yet');
+  // followers donut
+  const fm=mem.filter(m=>N(m.followers)>0).sort((a,b)=>N(b.followers)-N(a.followers)), totF=fm.reduce((a,m)=>a+N(m.followers),0);
+  if(totF>0){
+    const seg=fm.slice(0,6).map((m,i)=>({n:m.name||'Puffin',v:N(m.followers),c:PAL[i]})); const rest=totF-seg.reduce((a,x)=>a+x.v,0); if(rest>0) seg.push({n:'Everyone else',v:rest,c:'#93B3B3'});
+    const C=2*Math.PI*62; let off=0, arcs='';
+    seg.forEach(x=>{const len=C*x.v/totF; arcs+=`<circle cx="85" cy="85" r="62" fill="none" stroke="${x.c}" stroke-width="20" stroke-dasharray="${Math.max(0,len-2).toFixed(1)} ${C.toFixed(1)}" stroke-dashoffset="${(-off).toFixed(1)}" transform="rotate(-90 85 85)"><title>${esc(x.n)}: +${x.v}</title></circle>`; off+=len;});
+    $('#podDonut').innerHTML=`<div class="donutwrap"><svg class="donut" viewBox="0 0 170 170" role="img" aria-label="Followers gained by Puffin">${arcs}<text x="85" y="90" text-anchor="middle">+${fmt(totF)}</text><text class="sub" x="85" y="108" text-anchor="middle">FOLLOWERS</text></svg><div class="keys">${seg.map(x=>`<span><i style="background:${x.c}"></i>${esc(x.n)} · +${fmt(x.v)}</span>`).join('')}</div></div>`;
+  } else $('#podDonut').innerHTML=emptyChart('No followers logged yet');
+  // pod consistency ring
+  const pct=N(t.due)?Math.round(100*N(t.kept)/N(t.due)):0, C2=2*Math.PI*60;
+  $('#podRing').innerHTML=`<svg class="ring" viewBox="0 0 150 150" role="img" aria-label="${pct}% of the pod's LIVE commitments kept"><circle class="bgc" cx="75" cy="75" r="60"/><circle class="fgc" cx="75" cy="75" r="60" stroke-dasharray="${(C2*pct/100).toFixed(1)} ${C2.toFixed(1)}"/><text x="75" y="80" text-anchor="middle">${pct}%</text><text class="sub" x="75" y="100" text-anchor="middle">KEPT</text></svg>`;
+  $('#podRingTxt').innerHTML=N(t.due)?`Together the pod has kept <b>${fmt(N(t.kept))} of ${fmt(N(t.due))}</b> LIVE commitments so far. Every red light counts 🔥`:'The pod\'s consistency score starts on the first committed LIVE day.';
   const mine=cleanHandle(S.profile.handle).toLowerCase();
   const list=[{name:'Amanda',handle:'amandafieldingsmith',host:true},...(POD.members||[]).filter(m=>cleanHandle(m.handle).toLowerCase()!=='amandafieldingsmith').sort((a,b)=>N(b.lives)-N(a.lives)||N(b.minutes)-N(a.minutes))];
   $('#podCount').textContent=(POD.members||[]).length+' on TikTok';
@@ -667,7 +735,7 @@ function renderPod(){
     return `<div class="puff${m.host?' host':''}${me?' me':''}${f?' done':''}"><div class="av">${esc((m.name||h)[0].toUpperCase())}</div><div class="who"><b>${esc(m.name||'Puffin')}${me?' (you)':''}</b> <a href="https://www.tiktok.com/@${encodeURIComponent(h)}" target="_blank" rel="noopener">@${esc(h)}</a><div class="stats">${stats.map(x=>`<span>${esc(x)}</span>`).join('')}</div></div><div class="acts">${me?'':`<a class="btn sm" href="https://www.tiktok.com/@${encodeURIComponent(h)}" target="_blank" rel="noopener">Follow</a><button class="btn ghost icon" type="button" data-fol="${esc(h.toLowerCase())}" aria-pressed="${f}" title="Mark as followed">${f?'✓ Followed':'○'}</button>`}</div></div>`}).join('');
 }
 function renderIntent(){
-  const p=S.example?{start:TODAY}:S.profile, set=(id,v)=>{const el=$(id); if(document.activeElement!==el) el.value=v==null?'':v};
+  const p=ME?S.profile:{start:TODAY}, set=(id,v)=>{const el=$(id); if(document.activeElement!==el) el.value=v==null?'':v};
   set('#iName',p.name); set('#iHandle',p.handle?'@'+cleanHandle(p.handle):''); set('#iStart',p.start||TODAY);
   [['#iFol','startFollowers'],['#iSkool','startSkool'],['#iCust','startCustomers'],['#iRev','startRevenue'],['#iGoalC','goalClients'],['#iGoalF','goalFollowers']].forEach(([id,k])=>set(id,p[k]==null?'':p[k]));
   set('#iOffer',p.offer); set('#iPrice',p.price); set('#iBelief',p.belief); set('#iWhy',p.why); set('#iTopics',p.topics);
@@ -677,15 +745,14 @@ function renderIntent(){
 function renderAll(){renderHeader();renderToday();renderCal();renderLog();renderGrowth();renderPod();renderIntent();}
 
 /* ---------- routing ---------- */
-const VIEWS=['today','calendar','log','growth','resources','pod','intention'];
-function route(){const v=VIEWS.includes(location.hash.slice(1))?location.hash.slice(1):'today';
-  $$('[data-view]').forEach(s=>s.hidden=s.dataset.view!==v); $$('#tabs a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+v));
-  const on=$('#tabs a.on'); if(on&&on.scrollIntoView) on.scrollIntoView({block:'nearest',inline:'center'});
+const VIEWS=['home','intention','calendar','log','resources','pod'];
+function route(){let v=location.hash.slice(1); if(v==='today'||v==='growth') v='home'; if(!VIEWS.includes(v)) v=ME?'home':'intention';
+  $$('[data-view]').forEach(sec=>sec.hidden=sec.dataset.view!==v); $$('.side a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+v));
+  const on=$('.side a.on'); if(on&&on.scrollIntoView&&innerWidth<=900) on.scrollIntoView({block:'nearest',inline:'center'});
   if(v==='pod') loadPod();}
-function go(v){ if(location.hash==='#'+v) route(); else location.hash=v; const top=$('nav.tabs').offsetTop; if(window.scrollY>top) window.scrollTo({top,behavior:'smooth'}); }
+function go(v){ if(location.hash==='#'+v) route(); else location.hash=v; const top=$('.shell').offsetTop; if(window.scrollY>top) window.scrollTo({top,behavior:'smooth'}); }
 window.addEventListener('hashchange',route);
-document.addEventListener('click',e=>{const g=e.target.closest('[data-go]'); if(g){e.preventDefault();go(g.dataset.go);}});
-$('#quickLog').addEventListener('click',()=>{ if(!ME){go('intention');toast('Set your intention first to start logging');return;} resetLogForm();go('log');setTimeout(()=>$('#lMin').focus(),250)});
+document.addEventListener('click',e=>{const g=e.target.closest('[data-go]'); if(g){e.preventDefault();go(g.dataset.go);} const l=e.target.closest('[data-log]'); if(l){ if(!ME){go('intention');toast('Set your intention first to start logging');return;} resetLogForm();go('log');setTimeout(()=>$('#lMin').focus(),250);} });
 
 /* ---------- saving ---------- */
 function needMe(){ if(ME) return true; go('intention'); toast('Set your intention first. That starts your 30 days.'); return false; }
@@ -742,7 +809,7 @@ $('#iForm').addEventListener('submit',async e=>{e.preventDefault(); const v=s=>$
     if(!ME){
       const commit={days:[],minutes:30,time:''}, r=await api('join',{profile,commit});
       ME={id:r.id,secret:r.secret}; store.set(ME_KEY,JSON.stringify(ME));
-      S={example:false,profile,commit,lives:[]}; cache(); POD=null; renderAll();
+      S={profile,commit,lives:[]}; cache(); POD=null; renderAll();
       $('#iMsg').textContent='Your 30 days have started.'; celebrate(); toast('Welcome to the pod 🐚 Now pick your LIVE days.');
       $('#linkCard').scrollIntoView({behavior:'smooth',block:'start'});
       setTimeout(()=>go('calendar'),2600);
@@ -757,7 +824,7 @@ $('#copyLink').addEventListener('click',()=>copy(myLink(),'Private link copied. 
 $('#leaveBtn').addEventListener('click',()=>{$('#leaveConfirm').hidden=false;});
 $('#leaveNo').addEventListener('click',()=>{$('#leaveConfirm').hidden=true;});
 $('#leaveYes').addEventListener('click',async()=>{try{await api('leave');}catch(err){ if(err.status!==401){toast(err.message);return;} }
-  ME=null; store.del(ME_KEY); store.del(CACHE_KEY); S=example(); POD=null; $('#leaveConfirm').hidden=true; renderAll(); go('today'); toast('Your tracker was deleted');});
+  ME=null; store.del(ME_KEY); store.del(CACHE_KEY); S=blank(); POD=null; $('#leaveConfirm').hidden=true; renderAll(); go('intention'); toast('Your tracker was deleted');});
 
 /* ---------- pod ---------- */
 let podT=0;
@@ -782,8 +849,8 @@ function celebrate(){ if(matchMedia('(prefers-reduced-motion: reduce)').matches)
 
 /* ---------- boot ---------- */
 async function sync(){ if(!ME) return;
-  try{const r=await api('get'); S={example:false,profile:r.profile||{start:TODAY},commit:Object.assign({days:[],minutes:30,time:''},r.commit||{}),lives:r.lives||[]}; cache(); $('#errBanner').hidden=true; renderAll();}
-  catch(err){ if(err.status===401){ ME=null; store.del(ME_KEY); store.del(CACHE_KEY); S=example(); renderAll(); showErr('That private link doesn\'t open a tracker anymore. Start a new one in My intention.'); }
+  try{const r=await api('get'); S={profile:r.profile||{start:TODAY},commit:Object.assign({days:[],minutes:30,time:''},r.commit||{}),lives:r.lives||[]}; cache(); $('#errBanner').hidden=true; renderAll();}
+  catch(err){ if(err.status===401){ ME=null; store.del(ME_KEY); store.del(CACHE_KEY); S=blank(); renderAll(); route(); showErr('That private link doesn\'t open a tracker anymore. Start a new one in My intention.'); }
     else showErr('Your tracker didn\'t load. Check your connection. What you see may be out of date.'); }
 }
 renderAll(); route(); sync();
